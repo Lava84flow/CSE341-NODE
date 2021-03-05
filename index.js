@@ -38,7 +38,7 @@ express()
     }
   })
 
-  .get(/)
+  //.get('/')
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
