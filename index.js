@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 
+express().use(bodyParser.json());
 express().use(bodyParser.urlencoded({extended: true}));
 
 const { Pool } = require('pg');
@@ -38,10 +39,46 @@ express()
     }
   })
 
-  //.get('/')
+  .get('/postalrate', (req, res) => res.render('pages/postalrateform'))
+  .get('/postalresults', (req, res) => {
+    console.log(postalRateCalc(parseFloat(req.query.weight)
+    , req.query.mailtype
+  ));
+    res.render('pages/postalrateresults'
+    , { weight: req.query.weight
+      , price: postalRateCalc(parseFloat(req.query.weight)
+        , req.query.mailtype
+      ) 
+    })
+  })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
+
+postalRateCalc = (weight, mailtype) => {
+  switch(mailtype) {
+    case 'stamped':
+      if(weight >= 3.5) {
+        return 1.15;
+      } else if(weight >= 3) {
+        return 0.95;
+      } else if(weight >= 2) {
+        return 0.75;
+      } else if(weight >= 1) {
+        return 0.55;
+      }
+      break;
+    case 'metered':
+
+      break;
+    case 'flats':
+
+      break;
+    case 'retail':
+
+      break;
+  }
+}
 
 simpleMath = (left, operator, right) => {
   switch(operator) {

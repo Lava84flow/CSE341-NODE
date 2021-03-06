@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSE-341 NODE | Postal Rate Calculator | Lava84flow</title>
+  <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+  <%- include ("../partials/nav.ejs") %>
+
+<main>
+
+    <h1>Postal Rate Calculator</h1>
+
+    <form action="postalresults" method="get">
+      <label>Weight(oz.)</label>
+        <input type="text" name="weight"><br />
+        
+        <label>Mail Type</label>
+        <select name="mailtype">
+            <option value="stamped">Letters (Stamped)</option>
+            <option value="metered">Letters (Metered)</option>
+            <option value="flats">Large Envelopes (Flats)</option>
+            <option value="retail">First-Class Package Service—Retail</option>
+        </select><br />
+
+        <input type="submit" value="Calculate">
+    </form>
+
+</main>
+
+</body>
+</html>
