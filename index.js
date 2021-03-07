@@ -4,6 +4,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
 express().use(bodyParser.json());
 express().use(bodyParser.urlencoded({extended: true}));
 
@@ -41,14 +46,12 @@ express()
 
   .get('/postalrate', (req, res) => res.render('pages/postalrateform'))
   .get('/postalresults', (req, res) => {
-    console.log(postalRateCalc(parseFloat(req.query.weight)
+    /*console.log(postalRateCalc(parseFloat(req.query.weight)
     , req.query.mailtype
-  ));
+  ))*/;
     res.render('pages/postalrateresults'
     , { weight: req.query.weight
-      , price: postalRateCalc(parseFloat(req.query.weight)
-        , req.query.mailtype
-      ) 
+      , price: postalRateCalc(parseFloat(req.query.weight), req.query.mailtype) 
     })
   })
 
@@ -56,26 +59,97 @@ express()
 
 
 postalRateCalc = (weight, mailtype) => {
+
+  var err='';
+
   switch(mailtype) {
     case 'stamped':
-      if(weight >= 3.5) {
-        return 1.15;
-      } else if(weight >= 3) {
-        return 0.95;
-      } else if(weight >= 2) {
-        return 0.75;
-      } else if(weight >= 1) {
-        return 0.55;
+      if(weight <= 3.5) {
+        return formatter.format(1.15);
+      } else if(weight <= 3) {
+        return formatter.format(0.95);
+      } else if(weight <= 2) {
+        return formatter.format(0.75);
+      } else if(weight <= 1) {
+        return formatter.format(0.55);
+      } else {
+        return err = ' Error: Stamped Packages must be no more than 3.5 ounces'
       }
       break;
     case 'metered':
-
+      if(weight <= 3.5) {
+        return formatter.format(1.11);
+      } else if(weight <= 3) {
+        return formatter.format(0.91);
+      } else if(weight <= 2) {
+        return formatter.format(0.71);
+      } else if(weight <= 1) {
+        return formatter.format(0.51);
+      } else {
+        return err = ' Error: Metered Packages must be no more than 3.5 ounces'
+      }
       break;
     case 'flats':
-
+      if(weight <= 13) {
+        return formatter.format(3.40);
+      } else if(weight <= 12) {
+        return formatter.format(3.20);
+      } else if(weight <= 11) {
+        return formatter.format(3.00);
+      } else if(weight <= 10) {
+        return formatter.format(2.80);
+      } else if(weight <= 9) {
+        return formatter.format(2.60);
+      } else if(weight <= 8) {
+        return formatter.format(2.40);
+      } else if(weight <= 7) {
+        return formatter.format(2.20);
+      } else if(weight <= 6) {
+        return formatter.format(2.00);
+      } else if(weight <= 5) {
+        return formatter.format(1.80);
+      } else if(weight <= 4) {
+        return formatter.format(1.60);
+      } else if(weight <= 3) {
+        return formatter.format(1.40);
+      } else if(weight <= 2) {
+        return formatter.format(1.20);
+      } else if(weight <= 1) {
+        return formatter.format(1.00);
+      } else {
+        return err = ' Error: Flat Packages must be no more than 13 ounces'
+      }
       break;
     case 'retail':
-
+      if(weight <= 13) {
+        return formatter.format(6.25);
+      } else if(weight <= 12) {
+        return formatter.format(5.50);
+      } else if(weight <= 11) {
+        return formatter.format(5.50);
+      } else if(weight <= 10) {
+        return formatter.format(5.50);
+      } else if(weight <= 9) {
+        return formatter.format(5.50);
+      } else if(weight <= 8) {
+        return formatter.format(4.80);
+      } else if(weight <= 7) {
+        return formatter.format(4.80);
+      } else if(weight <= 6) {
+        return formatter.format(4.80);
+      } else if(weight <= 5) {
+        return formatter.format(4.80);
+      } else if(weight <= 4) {
+        return formatter.format(4.00);
+      } else if(weight <= 3) {
+        return formatter.format(4.00);
+      } else if(weight <= 2) {
+        return formatter.format(4.00);
+      } else if(weight <= 1) {
+        return formatter.format(4.00);
+      } else {
+        return err = ' Error: Retail Packages must be no more than 13 ounces'
+      }
       break;
   }
 }
