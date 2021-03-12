@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
+const app = express();
 
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -55,10 +56,10 @@ express()
     })
   })
 
-  express.get('/getPerson', getPerson);
+  app.get('/getPerson', getPerson);
 
 
-  express.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
 
