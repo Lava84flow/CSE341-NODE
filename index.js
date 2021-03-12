@@ -55,7 +55,37 @@ express()
     })
   })
 
+  .get('/getPerson', getPerson);
+
+
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
+
+
+
+  function getPerson (request, response) {
+    const id = request.query.id;
+    
+    getPersonFromDB(id, function(error, result) {
+        const person = result[0];
+        response.status(200).json(person);
+    })
+};
+
+function getPersonFromDB(id, callback) {
+    const sql = "SELECT * FROM person WHERE id = $1::int";
+    
+    const params = [id];
+    
+    pool.query(sql, params, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        
+        callback(null, result.rows);
+    });
+};
 
 
 postalRateCalc = (weight, mailtype) => {
