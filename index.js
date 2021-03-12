@@ -55,10 +55,10 @@ express()
     })
   })
 
-  .get('/getPerson', getPerson);
+  express.get('/getPerson', getPerson);
 
 
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+  express.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
 
@@ -71,7 +71,7 @@ express()
         const person = result[0];
         response.status(200).json(person);
     })
-};
+}
 
 function getPersonFromDB(id, callback) {
     const sql = "SELECT * FROM person WHERE id = $1::int";
@@ -85,7 +85,7 @@ function getPersonFromDB(id, callback) {
         
         callback(null, result.rows);
     });
-};
+}
 
 
 postalRateCalc = (weight, mailtype) => {
