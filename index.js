@@ -22,17 +22,16 @@ const pool = new Pool({
 });
 
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .get('/cool', (req, res) => res.send(cool()))
-  .get('/times', (req, res) => res.send(showTimes()))
-  .get('/mathform', (req, res) => res.render('pages/Week-09/mathform'))
-  .get('/math', (req, res) => {console.log('you are at math results'); /*console.log(simpleMath(parseFloat(req.query.left), req.query.operator, parseFloat(req.query.right)));*/ res.render('pages/Week-09/mathresults', { left : req.query.left, operator: req.query.operator, right: req.query.right, result: simpleMath(parseFloat(req.query.left), req.query.operator, parseFloat(req.query.right)) })})
+  app.use(express.static(path.join(__dirname, 'public')))
+  app.set('views', path.join(__dirname, 'views'))
+  app.set('view engine', 'ejs')
+  app.get('/', (req, res) => res.render('pages/index'))
+  app.get('/cool', (req, res) => res.send(cool()))
+  app.get('/times', (req, res) => res.send(showTimes()))
+  app.get('/mathform', (req, res) => res.render('pages/Week-09/mathform'))
+  app.get('/math', (req, res) => {console.log('you are at math results'); /*console.log(simpleMath(parseFloat(req.query.left), req.query.operator, parseFloat(req.query.right)));*/ res.render('pages/Week-09/mathresults', { left : req.query.left, operator: req.query.operator, right: req.query.right, result: simpleMath(parseFloat(req.query.left), req.query.operator, parseFloat(req.query.right)) })})
   
-  .get('/db', async (req, res) => {
+  app.get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
@@ -45,8 +44,8 @@ express()
     }
   })
 
-  .get('/postalrate', (req, res) => res.render('pages/postalrateform'))
-  .get('/postalresults', (req, res) => {
+  app.get('/postalrate', (req, res) => res.render('pages/postalrateform'))
+  app.get('/postalresults', (req, res) => {
     /*console.log(postalRateCalc(parseFloat(req.query.weight)
     , req.query.mailtype
   ))*/;
