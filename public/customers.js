@@ -9,9 +9,14 @@ function getAddresses(customerId) {
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
         let data = jsObject;
-        console.log(data);
-		    let out = data;
-          /*console.log(out);*/
+        //console.log(data);
+        for (i = 0; i < data.length; i++) {
+          x += '<tr> <td>' + data[i].address_type + '</td> <td>' + data[i].address_line1 + '</td> <td>' + data[i].address_line2 + '</td> <td>' + data[i].city + '</td> <td>' + data[i].state + '</td> <td>' + data[i].zipcode + '</td> </tr>';
+        }
+		    let out = '<table style="width:100%;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
+        
+        ;
+          //console.log(out);
           document.getElementById("output").innerHTML = out;
       }
     });
@@ -28,7 +33,6 @@ function getAddresses(customerId) {
     <th>Zipcode</th>
     <th>Delete Address</th>
   </tr>
-
 */
 
 /*<tr><td>$type</td> <td>$address_line1</td> <td>$address_line2</td> <td>$city</td> <td>$state</td> <td>$zipcode</td> <td><a href=\"delete-address.php?ID=$address_id\">Delete</a></td></tr>*/

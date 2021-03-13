@@ -76,7 +76,7 @@ const pool = new Pool({
 }
 
 function getAddressesFromDB(id, callback) {
-    const sql = "SELECT * FROM anniesattic.addresses WHERE customers_idcustomers = $1::int";
+    const sql = "SELECT idaddresses, address_type, address_line1, address_line2, city, state, zipcode FROM anniesattic.addresses WHERE customers_idcustomers = $1::int";
     
     const params = [id];
     
