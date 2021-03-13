@@ -68,7 +68,7 @@ const pool = new Pool({
     const id = request.query.id;
     
     getAddressesFromDB(id, function(error, result) {
-        const address = result[0];
+        const address = result;
         response.status(200).json(address);
     })
 }
