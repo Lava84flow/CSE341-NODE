@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-    background-image: url("./shared/pics/dark-stripe-BG.png");
+    background-image: url("../shared/pics/dark-stripe-BG.png");
     background-attachment: fixed;
     color: rgb(180,180,180);
     margin: auto;

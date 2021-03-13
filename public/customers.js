@@ -6,6 +6,7 @@ function getAddresses(customerId) {
     .then((jsObject) => {
       if (jsObject.length == 0) {
         console.log("NO RESULTS");
+        document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
 		let out = JSON.stringify(jsObject);
         console.log(out);

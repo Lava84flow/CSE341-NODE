@@ -12,7 +12,7 @@
       <div class="container">
       <main>
       <br><br>
-      <div class="card col-md-9 offset-md-2 p-2" style="color: black;">
+      <div class="card p-2" style="color: black; width: 85%;">
                 <h4 class="mb-3">Search People</h4>
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -20,8 +20,8 @@
                             <input type="text" id="customerId" name="customerId">
                         </div>
                         </div><br>
-                        <button class="btn btn-dark" style="padding: 1em;" onclick="getAddresses(customerId.value)">Get Addresses</button><br>
-                        <button class="btn btn-dark" onclick="getOrders(customerId.value)">Get Orders</button><br>
+                        <button class="btn btn-dark" style="margin: 0.5em;" onclick="getAddresses(customerId.value)">Get Addresses</button><br>
+                        <button class="btn btn-dark" style="margin: 0.5em;" onclick="getOrders(customerId.value)">Get Orders</button><br>
                         <div style="padding: 2em; width: 100%;" id="output"></div>
           </div> 
       </main>
