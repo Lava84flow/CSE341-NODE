@@ -57,6 +57,8 @@ const pool = new Pool({
 
   app.get('/getAddresses', getAddresses);
 
+  app.get('/getOrders', getOrders);
+
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
@@ -85,6 +87,30 @@ function getAddressesFromDB(id, callback) {
         
         callback(null, result.rows);
     });
+}
+
+
+function getOrders (request, response) {
+  const id = request.query.id;
+  
+  getOrdersFromDB(id, function(error, result) {
+      const address = result;
+      response.status(200).json(address);
+  })
+}
+
+function getOrdersFromDB(id, callback) {
+  const sql = "SELECT * FROM anniesattic.orders WHERE customers_idcustomers = $1::int";
+  
+  const params = [id];
+  
+  pool.query(sql, params, function(err, result) {
+      if (err) {
+          console.log(err);
+      }
+      
+      callback(null, result.rows);
+  });
 }
 
 
