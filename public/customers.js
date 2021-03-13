@@ -8,8 +8,8 @@ function getAddresses(customerId) {
         console.log("NO RESULTS");
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
-        let data = jsObject
-        console.log(data)
+        let data = jsObject;
+        console.log(data);
 		    let out = data;
           /*console.log(out);*/
           document.getElementById("output").innerHTML = out;
