@@ -8,7 +8,7 @@ function getAddresses(customerId) {
         console.log("NO RESULTS");
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
-        let data = JSON.parse(jsObject)
+        let data = jsObject
         console.log(data)
 		    let out = data;
           /*console.log(out);*/
