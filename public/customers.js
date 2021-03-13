@@ -15,7 +15,6 @@ function getAddresses(customerId) {
         }
 		    let out = '<table style="width:100%;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
         
-        ;
           //console.log(out);
           document.getElementById("output").innerHTML = out;
       }
