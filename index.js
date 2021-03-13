@@ -55,7 +55,7 @@ const pool = new Pool({
     })
   })
 
-  app.get('/getPerson', getPerson);
+  app.get('/getAddresses', getAddresses);
 
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -64,17 +64,17 @@ const pool = new Pool({
 
 
 
-  function getPerson (request, response) {
+  function getAddresses (request, response) {
     const id = request.query.id;
     
-    getPersonFromDB(id, function(error, result) {
-        const person = result[0];
-        response.status(200).json(person);
+    getAddressesFromDB(id, function(error, result) {
+        const address = result[0];
+        response.status(200).json(address);
     })
 }
 
-function getPersonFromDB(id, callback) {
-    const sql = "SELECT * FROM person WHERE id = $1::int";
+function getAddressesFromDB(id, callback) {
+    const sql = "SELECT * FROM anniesattic.addresses WHERE customers_idcustomers = $1::int";
     
     const params = [id];
     

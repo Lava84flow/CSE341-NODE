@@ -1,6 +1,6 @@
-function getPerson(personId) {
+function getAddresses(customerId) {
   let classIdURL =
-    "/getPerson?id=" + personId;
+    "/getAdresses?id=" + customerId;
   fetch(classIdURL)
     .then((response) => response.json())
     .then((jsObject) => {

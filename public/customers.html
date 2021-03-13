@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>People</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     
     </head>
@@ -11,16 +12,17 @@
       <div class="container">
       <main>
       <br><br>
-      <div class="card col-md-6 offset-md-3 p-2">
+      <div class="card col-md-9 offset-md-2 p-2" style="color: black;">
                 <h4 class="mb-3">Search People</h4>
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="personId">ID</label>
-                            <input type="text" id="personId" name="personId">
+                            <label for="customerId">ID</label>
+                            <input type="text" id="customerId" name="customerId">
                         </div>
                         </div><br>
-                        <button class="btn btn-dark" onclick="getPerson(personId.value)">Get Details</button><br>
-                        <div id="output"></div>
+                        <button class="btn btn-dark" onclick="getAddresses(customerId.value)">Get Addresses</button><br>
+                        <button class="btn btn-dark" onclick="getOrders(customerId.value)">Get Orders</button><br>
+                        <div style="padding: 2em; width: 100%;" id="output"></div>
           </div> 
       </main>
     </div> 
