@@ -9,7 +9,7 @@ function getAddresses(customerId) {
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
 		let out = JSON.stringify(jsObject);
-        console.log(out);
+        /*console.log(out);*/
         document.getElementById("output").innerHTML = out;
       }
     });
@@ -26,7 +26,7 @@ function getOrders(customerId) {
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
 		let out = JSON.stringify(jsObject);
-        console.log(out);
+        /*console.log(out);*/
         document.getElementById("output").innerHTML = out;
       }
     });
