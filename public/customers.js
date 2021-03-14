@@ -14,7 +14,7 @@ function getAddresses(customerId) {
         for (i = 0; i < data.length; i++) {
           x += '<tr> <td>' + data[i].address_type + '</td> <td>' + data[i].address_line1 + '</td> <td>' + data[i].address_line2 + '</td> <td>' + data[i].city + '</td> <td>' + data[i].state + '</td> <td>' + data[i].zipcode + '</td> </tr>';
         }
-		    let out = '<table style="width:100%;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
+		    let out = '<table style="width: 100%; color: black;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
 
           //console.log(out);
           document.getElementById("output").innerHTML = out;
