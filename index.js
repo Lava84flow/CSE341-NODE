@@ -100,7 +100,7 @@ function getOrders (request, response) {
 }
 
 function getOrdersFromDB(id, callback) {
-  const sql = "SELECT * FROM anniesattic.orders WHERE customers_idcustomers = $1::int";
+  const sql = "SELECT * FROM anniesattic.orders o JOIN anniesattic.customers c ON o.customers_idcustomers = c.idcustomers WHERE c.idcustomers = $1::int";
   
   const params = [id];
   

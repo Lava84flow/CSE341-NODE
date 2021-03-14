@@ -49,9 +49,16 @@ function getOrders(customerId) {
         console.log("NO RESULTS");
         document.getElementById("output").innerHTML = "NO RESULTS";
       } else {
-		let out = JSON.stringify(jsObject);
-        /*console.log(out);*/
-        document.getElementById("output").innerHTML = out;
+        var x = '';
+        let data = jsObject;
+        console.log(data);
+        for (i = 0; i < data.length; i++) {
+          x += '<tr> <td>' + data[i].address_type + '</td> <td>' + data[i].address_line1 + '</td> <td>' + data[i].address_line2 + '</td> <td>' + data[i].city + '</td> <td>' + data[i].state + '</td> <td>' + data[i].zipcode + '</td> </tr>';
+        }
+		    let out = '<table style="width: 100%; color: black;"> <tr> <th>First Name</th> <th>Last Name</th> <th>Subtotal</th> <th>Taxes</th> <th>Shipping</th> <th>Status</th> <th>Shipping Address</th> <th>Billing Address</th> </tr>' + x + '</table>';
+
+          //console.log(out);
+          document.getElementById("output").innerHTML = out;
       }
     });
 }
