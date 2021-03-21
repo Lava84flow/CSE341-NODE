@@ -9,8 +9,7 @@
     
     </head>
   <body class="bg-secondary">
-      <div class="container" id="wrapper">
-      <main id="content">
+
 <!--
         <?php 
             // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -27,38 +26,54 @@
 
 -->
 
-        <div style="width: 100%; text-align: center;">
-            <button class="btn btn-light" style="margin: 0.5em;" onclick="loadRegister()">New User</button><br>
-            <button class="btn btn-light" style="margin: 0.5em;" onclick="loadLogin()">Login</button><br>
-            
-        </div>
 
-        <div style="width: 100%; margin: auto;">
-            <div class="page-header" style="width: 100%; margin: auto; text-align: center;">
-                <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["fname"]); ?> <?php echo htmlspecialchars($_SESSION["lname"]); ?></b>. Welcome to our site.</h1>
-                <h2>Your username is: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h2>
-            </div>
-            
-            <div style="padding-top: 0.5em; width: 100%; margin: auto; text-align: center;">
-                <h3>What would you like to do today?</h3>
-                <a href="addresses.php" class="project-button centered-button">View Saved Addresses</a>
-                <br />
-                <!--<a href="payments.php" class="project-button centered-button">View Saved Payment Info</a>
-                <br />-->
-                <a href="store.php" class="project-button centered-button">Go Shopping</a>
-                <br />
-                <a href="past-orders.php" class="project-button centered-button">View Past Orders</a>
-            </div>
-                
-            <div class="centered-button" style="padding-top: 0.5em; width: 100%; margin: auto;">    
-                <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-                <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-            </div>
-                
-            </div>
+
+
+      <div class="container" id="wrapper">
+      <main id="content">
+
+
 
       </main>
     </div> 
+
+    <script>
+
+      var sessionIdTest = 1
+      
+          if (typeof sessionIdTest !== 'undefined' && sessionIdTest == true) {
+            document.querySelector('#content').innerHTML = 
+            `<div style="width: 100%; margin: auto;">
+                  <div class="page-header" style="width: 100%; margin: auto; text-align: center;">
+                      <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["fname"]); ?> <?php echo htmlspecialchars($_SESSION["lname"]); ?></b>. Welcome to our site.</h1>
+                      <h2>Your username is: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h2>
+                  </div>
+                  
+                  <div style="padding-top: 0.5em; width: 100%; margin: auto; text-align: center;">
+                      <h3>What would you like to do today?</h3>
+                      <a href="addresses.php" class="project-button centered-button">View Saved Addresses (doesn't work)</a>
+                      <br />
+                      <!--<a href="payments.php" class="project-button centered-button">View Saved Payment Info</a>
+                      <br />-->
+                      <a href="store.php" class="project-button centered-button">Go Shopping (doesn't work)</a>
+                      <br />
+                      <a href="past-orders.php" class="project-button centered-button">View Past Orders (doesn't work)</a>
+                  </div>
+                      
+                  <div class="centered-button" style="padding-top: 0.5em; width: 100%; margin: auto;">    
+                      <a href="reset-password.php" class="btn btn-warning">Reset Your Password (doesn't work)</a>
+                      <a href="logout.php" class="btn btn-danger">Sign Out of Your Account (doesn't work)</a>
+                  </div>`;
+          } else {
+            document.querySelector('#content').innerHTML = 
+            `<div style="width: 100%; text-align: center;">
+                  <button class="btn btn-light" style="margin: 0.5em;" onclick="loadRegister()">New User</button><br>
+                  <button class="btn btn-light" style="margin: 0.5em;" onclick="loadLogin()">Login</button><br>
+              </div>`;
+          }
+      
+      </script>
+
     <script src="milestone2.js"></script>
   </body>
 </html>
