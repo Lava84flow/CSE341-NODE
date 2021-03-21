@@ -1,9 +1,11 @@
-const cool = require('cool-ascii-faces');
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+var cool = require('cool-ascii-faces');
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 const PORT = process.env.PORT || 5000;
 const app = express();
+
 
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -94,8 +96,8 @@ function getOrders (request, response) {
   const id = request.query.id;
   
   getOrdersFromDB(id, function(error, result) {
-      const address = result;
-      response.status(200).json(address);
+      const order = result;
+      response.status(200).json(order);
   })
 }
 
