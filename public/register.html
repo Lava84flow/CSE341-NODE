@@ -2,47 +2,50 @@
         <p>Please fill this form to create an account.</p>
         <form action='' method="get">
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>First Name</label>
-                <input type="text" name="fname" class="form-control" required>
-                <span class="help-block" id="fname_err"></span>
+                <input type="text" name="fname" class="form-control" id="fname">
+                <span class="help-block " id="fname_err"></span>
             </div>
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>Last Name</label>
-                <input type="text" name="lname" class="form-control" required>
+                <input type="text" name="lname" class="form-control" id="lname">
                 <span class="help-block" id="lname_err"></span>
             </div>
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>Email</label>
-                <input type="text" name="email" class="form-control" required>
+                <input type="text" name="email" class="form-control" id="email">
                 <span class="help-block" id="email_err"></span>
             </div>
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control" required>
+                <input type="text" name="username" class="form-control" id="username">
                 <span class="help-block" id="username_err"></span>
             </div>
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="password" class="form-control" id="password">
                 <span class="help-block" id="password_err"></span>
             </div>
             
-            <div class="form-group">
+            <div class="form-group has-error">
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" required>
+                <input type="password" name="confirm_password" class="form-control" id="confirm_password">
                 <span class="help-block" id="confirm_password_err"></span>
             </div>
             
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" style="margin-top: 0.25em;" value="Submit">
-            </div>
-            
+            <!-- <div class="form-group">
+                <button class="btn btn-primary" style="margin-top: 0.25em;" onclick="verifyRegistration()">Submit</button>
+            </div>-->
             
         </form>
+
+        <div class="form-group">
+            <button class="btn btn-primary" style="margin-top: 0.25em;" onclick="verifyRegistration()">Submit</button>
+        </div>
 
         <p>Already have an account? <br> <button class="btn btn-primary" style="margin: 0.5em; background-color: darkred;" onclick="loadLogin()">Login here</button></p>
