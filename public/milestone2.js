@@ -153,9 +153,9 @@ async function getEmails(email) {
     .then((jsObject) => {
       if (jsObject.length == 0) {
         console.log("NO RESULTS");
-        return true;
-      } else {
         return false;
+      } else {
+        return true;
       }
     });
 }
