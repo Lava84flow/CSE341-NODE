@@ -78,7 +78,7 @@ const pool = new Pool({
   }
   
   function getEmailsFromDB(email, callback) {
-    const sql = "SELECT idcustomers FROM anniesattic.customers WHERE email = $1::string";
+    const sql = "SELECT idcustomers FROM anniesattic.customers WHERE email = $1::text";
     
     const params = [email];
     
