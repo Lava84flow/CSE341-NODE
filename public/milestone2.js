@@ -65,7 +65,7 @@ function loadRegister() {
     });
 }
 
-function verifyRegistration() {
+async function verifyRegistration() {
 
   if(empty(escapeHtml(document.querySelector('#fname').value))){
     fname_err = "Please enter a First Name.";
@@ -90,7 +90,7 @@ function verifyRegistration() {
     document.querySelector('#email_err').innerHTML = email_err;
   } else {
 
-    var emails = await getEmails(email.value)
+    var emails = await getEmails(email.value);
 
     if (emails = false) {
       email_err = '';
