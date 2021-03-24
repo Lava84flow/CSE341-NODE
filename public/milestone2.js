@@ -145,7 +145,7 @@ async function verifyRegistration() {
 }
 
 
-function getEmails(email) {
+async function getEmails(email) {
   let classIdURL =
     "/getEmails?email=" + email;
   fetch(classIdURL)
