@@ -1,3 +1,4 @@
+const { Router } = require("express");
 
 var username, password, confirm_password, fname, lname, email;
 username = password = confirm_password = fname = lname = email = "";
@@ -90,7 +91,7 @@ async function verifyRegistration() {
     document.querySelector('#email_err').innerHTML = email_err;
   } else {
 
-    var emails = await getEmails(escapeHtml(document.querySelector('#email').value));
+    var emails = await checkEmails(escapeHtml(document.querySelector('#email').value));
 
     if (emails == false) {
       email_err = '';
@@ -145,18 +146,18 @@ async function verifyRegistration() {
 }
 
 
-async function getEmails(email) {
+async function checkEmails(email) {
   let classIdURL =
     "/getEmails?email=" + email;
   fetch(classIdURL)
     .then((response ) => response.json())
     .then((jsObject) => {
-      console.log(jsObject)
       if (jsObject.length == 0) {
-        console.log("NO RESULTS");
-        return false;
+        //console.log("NO RESULTS");
+        return results = false;
       } else {
-        return true;
+        return results = true;
       }
     });
+  return results;
 }
