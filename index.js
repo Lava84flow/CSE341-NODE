@@ -72,13 +72,13 @@ const pool = new Pool({
     const email = request.query.email;
     
     getEmailsFromDB(email, function(error, result) {
-        const order = result;
-        response.status(200).json(order);
+        const email = result;
+        response.status(200).json(email);
     })
   }
   
   function getEmailsFromDB(email, callback) {
-    const sql = "SELECT idcustomers FROM anniesattic.customers WHERE email = $1::str";
+    const sql = "SELECT idcustomers FROM anniesattic.customers WHERE email = $1::string";
     
     const params = [email];
     

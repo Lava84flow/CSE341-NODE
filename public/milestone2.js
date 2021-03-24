@@ -145,12 +145,13 @@ async function verifyRegistration() {
 }
 
 
-async function getEmails(email) {
+function getEmails(email) {
   let classIdURL =
     "/getEmails?email=" + email;
   fetch(classIdURL)
-    .then((response) => response.json())
+    .then((response ) => response.json())
     .then((jsObject) => {
+      console.log(jsObject)
       if (jsObject.length == 0) {
         console.log("NO RESULTS");
         return false;
