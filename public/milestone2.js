@@ -92,7 +92,7 @@ async function verifyRegistration() {
 
     var emails = await getEmails(email.value);
 
-    if (emails = false) {
+    if (emails == false) {
       email_err = '';
       email = escapeHtml(document.querySelector('#email').value);
       document.querySelector('#email_err').innerHTML = '';
