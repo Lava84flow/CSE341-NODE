@@ -61,11 +61,12 @@ const pool = new Pool({
 
   app.get('/getOrders', getOrders);
 
+  app.get('/getEmails', getEmails);
+
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
-  app.get('/getEmails', getEmails);
 
 
   function getEmails (request, response) {
