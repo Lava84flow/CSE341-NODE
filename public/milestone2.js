@@ -123,6 +123,7 @@ async function verifyRegistration() {
       username_err = "This username is already taken.";
       document.querySelector('#username_err').innerHTML = username_err;
     }
+  }
 
   if(empty(escapeHtml(document.querySelector('#password').value))){
     password_err = "Please enter a password.";
