@@ -157,7 +157,7 @@ async function verifyRegistration() {
 async function checkEmails(email) {
   let classIdURL =
     "/getEmails?email=" + email;
-  fetch(classIdURL)
+  await fetch(classIdURL)
     .then((response ) => response.json())
     .then((jsObject) => {
       if (jsObject.length == 0) {
@@ -173,7 +173,7 @@ async function checkEmails(email) {
 async function checkUsers(user) {
   let classIdURL =
     "/getUsers?email=" + user;
-  fetch(classIdURL)
+  await fetch(classIdURL)
     .then((response ) => response.json())
     .then((jsObject) => {
       if (jsObject.length == 0) {
