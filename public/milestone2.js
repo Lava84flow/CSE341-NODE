@@ -112,10 +112,17 @@ async function verifyRegistration() {
     username_err = "Please enter a username.";
     document.querySelector('#username_err').innerHTML = username_err;
   } else {
-    username_err = '';
-    username = escapeHtml(document.querySelector('#username').value);
-    document.querySelector('#username_err').innerHTML = '';
-  }
+
+    var users = await checkUsers(escapeHtml(document.querySelector('#username').value));
+
+    if (users == false) {
+      username_err = '';
+      username = escapeHtml(document.querySelector('#username').value);
+      document.querySelector('#username_err').innerHTML = '';
+    } else {
+      username_err = "This username is already taken.";
+      document.querySelector('#username_err').innerHTML = username_err;
+    }
 
   if(empty(escapeHtml(document.querySelector('#password').value))){
     password_err = "Please enter a password.";
@@ -149,6 +156,22 @@ async function verifyRegistration() {
 async function checkEmails(email) {
   let classIdURL =
     "/getEmails?email=" + email;
+  fetch(classIdURL)
+    .then((response ) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        //console.log("NO RESULTS");
+        return results = false;
+      } else {
+        return results = true;
+      }
+    });
+  return results;
+}
+
+async function checkUsers(user) {
+  let classIdURL =
+    "/getUsers?email=" + user;
   fetch(classIdURL)
     .then((response ) => response.json())
     .then((jsObject) => {
