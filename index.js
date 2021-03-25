@@ -63,6 +63,8 @@ const pool = new Pool({
 
   app.get('/getEmails', getEmails);
 
+  app.get('/getUsers', getUsers);
+
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
@@ -93,7 +95,28 @@ const pool = new Pool({
   }
   
 
-
+  function getUsers (request, response) {
+    const email = request.query.email;
+    
+    getUsersFromDB(email, function(error, result) {
+        const email = result;
+        response.status(200).json(email);
+    })
+  }
+  
+  function getUsersFromDB(user, callback) {
+    const sql = "SELECT idcustomers FROM anniesattic.customers WHERE username = $1::text";
+    
+    const params = [user];
+    
+    pool.query(sql, params, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        
+        callback(null, result.rows);
+    });
+  }
 
 
 
