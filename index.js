@@ -110,9 +110,10 @@ console.log(password)
 
         console.log(result);
 
-        //callback(null, result.rows[0]);
+        //callback(null, res.rows[0]);
     });
 
+    console.log(result);
     res.json(result);
 
   }
