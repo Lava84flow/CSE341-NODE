@@ -167,7 +167,7 @@ function saveCustomerToDB () {
 		password: password
 	};
 
-  console.log(params)
+  //console.log(params)
 
 	$.post("/saveCustomer", params, function(result) {
     /*
