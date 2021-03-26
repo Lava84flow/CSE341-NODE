@@ -6,7 +6,8 @@ var session = require('express-session');
 var bcrypt = require('bcrypt');
 
 
-//const saltRounds = 10;
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -91,7 +92,7 @@ console.log(username);
 console.log(email);
 console.log(password)
 
-    var salt = bcrypt.genSaltSync(saltRounds);
+    
     var hashed_password = bcrypt.hashSync(password, salt);
   
 console.log(hashed_password);
