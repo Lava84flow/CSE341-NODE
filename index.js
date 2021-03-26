@@ -3,8 +3,13 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var bcrypt = require('bcrypt');
+
+
+const saltRounds = 10;
 const PORT = process.env.PORT || 5000;
 const app = express();
+
 
 
 var formatter = new Intl.NumberFormat('en-US', {
@@ -12,8 +17,8 @@ var formatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
-express().use(bodyParser.json());
-express().use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // to support URL-encoded bodies
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -65,8 +70,39 @@ const pool = new Pool({
 
   app.get('/getUsers', getUsers);
 
+  app.post('/saveCustomer', handleSaveCustomer);
+
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
+  function handleSaveCustomer(req, res) {
+    var result = {success: false};
+
+    var fname = req.body.first_name;
+    var lname = req.body.last_name;
+    var username = req.body.username;
+    var email = req.body.email;
+    var hashed_password = bcrypt.hashSync(req.body.password, saltRounds);
+  
+
+    const sql = "INSERT INTO anniesattic.customers (first_name, last_name, username, email, password) VALUES (1::text, 2::text, 3::text, 4::text, 5::text);";
+  
+    const params = [fname, lname, username, email, hashed_password];
+    
+    pool.query(sql, params, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        result = {success: true};
+        callback(null, result.rows[0]);
+    });
+
+    //res.json(result);
+
+  }
+
+
 
 
 

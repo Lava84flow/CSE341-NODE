@@ -151,6 +151,31 @@ async function verifyRegistration() {
     }
   }
 
+  if(empty(username_err) && empty(password_err) && empty(confirm_password_err) && empty(fname_err) && empty(lname_err) && empty(email_err)){
+    saveCustomerToDB();
+  }
+
+}
+
+function saveCustomerToDB () {
+
+  var username, password, confirm_password, fname, lname, email;
+
+  var params = {
+    first_name: fname,
+    last_name: lname,
+    email: email,
+		username: username,
+		password: password
+	};
+
+	$.post("/saveCustomer", params, function(result) {
+		if (result && result.success) {
+			$("#status").text("You Have Registered");
+		} else {
+			$("#status").text("Error Registering");
+		}
+	});
 }
 
 
