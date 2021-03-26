@@ -97,7 +97,7 @@ console.log(password)
   
 console.log(hashed_password);
 
-    const sql = "INSERT INTO anniesattic.customers (first_name, last_name, username, email, password) VALUES (1::text, 2::text, 3::text, 4::text, 5::text);";
+    const sql = "INSERT INTO anniesattic.customers (first_name, last_name, username, email, password) VALUES ($1::text, $2::text, $3::text, $4::text, $5::text);";
   
     const params = [fname, lname, username, email, hashed_password];
     
