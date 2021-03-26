@@ -86,16 +86,17 @@ const pool = new Pool({
     var email = req.body.email;
     var password = req.body.password;
 
+    /*
 console.log(fname);
 console.log(lname);
 console.log(username);
 console.log(email);
 console.log(password)
-
+*/
     
     var hashed_password = bcrypt.hashSync(password, salt);
   
-console.log(hashed_password);
+//console.log(hashed_password);
 
     const sql = "INSERT INTO anniesattic.customers (first_name, last_name, username, email, password) VALUES ($1::text, $2::text, $3::text, $4::text, $5::text);";
   
@@ -106,10 +107,10 @@ console.log(hashed_password);
             console.log(err);
         }
         result = {success: true};
-        callback(null, result.rows[0]);
+        //callback(null, result.rows[0]);
     });
 
-    //res.json(result);
+    res.json(result);
 
   }
 
