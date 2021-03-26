@@ -78,7 +78,7 @@ const pool = new Pool({
 
 
   function handleSaveCustomer(req, res) {
-    var result = {success: false};
+    
 
     var fname = req.body.first_name;
     var lname = req.body.last_name;
@@ -103,18 +103,17 @@ console.log(password)
     const params = [fname, lname, username, email, hashed_password];
     
     pool.query(sql, params, function(err, res) {
+      var result = {success: false};
         if (err) {
-            console.log(err);
+          result = {success: false};
+          console.log(err);
+            
+        } else { 
+          return result = {success: true};
         }
-        result = {success: true};
-
-        console.log(result);
-
+        res.json(result);
         //callback(null, res.rows[0]);
     });
-
-    console.log(result);
-    res.json(result);
 
   }
 
