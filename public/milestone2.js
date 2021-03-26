@@ -159,8 +159,6 @@ async function verifyRegistration() {
 
 function saveCustomerToDB () {
 
-  var username, password, confirm_password, fname, lname, email;
-
   var params = {
     first_name: fname,
     last_name: lname,
@@ -169,12 +167,16 @@ function saveCustomerToDB () {
 		password: password
 	};
 
+  console.log(params)
+
 	$.post("/saveCustomer", params, function(result) {
+    /*
 		if (result && result.success) {
 			$("#status").text("You Have Registered");
 		} else {
 			$("#status").text("Error Registering");
 		}
+    */
 	});
 }
 

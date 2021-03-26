@@ -6,7 +6,7 @@ var session = require('express-session');
 var bcrypt = require('bcrypt');
 
 
-const saltRounds = 10;
+//const saltRounds = 10;
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -83,8 +83,18 @@ const pool = new Pool({
     var lname = req.body.last_name;
     var username = req.body.username;
     var email = req.body.email;
-    var hashed_password = bcrypt.hashSync(req.body.password, saltRounds);
+    var password = req.body.password;
+
+console.log(fname);
+console.log(lname);
+console.log(username);
+console.log(email);
+console.log(password)
+
+    var salt = bcrypt.genSaltSync(saltRounds);
+    var hashed_password = bcrypt.hashSync(password, salt);
   
+console.log(hashed_password);
 
     const sql = "INSERT INTO anniesattic.customers (first_name, last_name, username, email, password) VALUES (1::text, 2::text, 3::text, 4::text, 5::text);";
   
