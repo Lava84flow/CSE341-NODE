@@ -131,15 +131,17 @@ console.log(password)
 
     checkUsers(username, function(error, result) {
       const user = result;
-      response.status(200).json(user);
-  })
-  
-console.log(user);
+      console.log(user)
 
+      response.status(200).json(user);
+  });
+  
+//console.log(user);
+/*
   if (user.length == 0) {
     console.log("NO RESULTS");
   }
-
+*/
   /*
     if (req.body.username == 'admin' && req.body.password == 'password') {
       req.session.user = req.body.username;
