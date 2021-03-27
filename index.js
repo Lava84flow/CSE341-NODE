@@ -102,7 +102,7 @@ console.log(password)
   
     const params = [fname, lname, username, email, hashed_password];
     
-    pool.query(sql, params, function(err, res) {
+    var result = pool.query(sql, params, function(err, res) {
       var result = {success: false};
         if (err) {
           result = {success: false};
