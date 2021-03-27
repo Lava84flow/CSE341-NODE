@@ -129,7 +129,7 @@ console.log(password)
     password = req.body.password;
 
 
-    user = checkUsers(username, function(error, result) {
+    var user = checkUsers(username, function(error, result) {
       return result;
       //console.log(user)
 
