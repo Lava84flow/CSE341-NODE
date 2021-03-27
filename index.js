@@ -111,9 +111,13 @@ console.log(password)
         } else { 
           return result = {success: true};
         }
+        console.log(result)
         res.json(result);
         //callback(null, res.rows[0]);
     });
+
+    console.log(result)
+    res.json(result);
 
   }
 
