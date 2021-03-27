@@ -136,7 +136,7 @@ console.log(password)
       //response.status(200).json(user);
   });
   
-//console.log(user);
+console.log(user);
 /*
   if (user.length == 0) {
     console.log("NO RESULTS");
