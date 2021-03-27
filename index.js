@@ -130,9 +130,9 @@ console.log(password)
 
 
     var user = checkUsers(username, function(error, result) {
-      return result;
+      const user = result;
       //console.log(user)
-
+      return user;
       //response.status(200).json(user);
   });
   
