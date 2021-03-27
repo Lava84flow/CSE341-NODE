@@ -73,6 +73,7 @@ const pool = new Pool({
 
   app.post('/saveCustomer', handleSaveCustomer);
 
+  app.post('/login', handleLogin);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
@@ -121,8 +122,46 @@ console.log(password)
 
   }
 
+  function handleLogin(req, res) {
+    var result = {success: false};
+
+    username = req.body.username;
+    password = req.body.password;
 
 
+    checkUsers(username, function(error, result) {
+      const user = result;
+      response.status(200).json(user);
+  })
+  
+console.log(user);
+
+  if (user.length == 0) {
+    console.log("NO RESULTS");
+  }
+
+  /*
+    if (req.body.username == 'admin' && req.body.password == 'password') {
+      req.session.user = req.body.username;
+      result = {success: true};
+    }
+  */
+      //res.json(result);
+  }
+  
+  function checkUsers(username, callback) {
+    const sql = "SELECT idcustomers, first_name, last_name, username, password FROM anniesattic.customers WHERE username = $1::text;";
+    
+    const params = [username];
+    
+    pool.query(sql, params, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        
+        callback(null, result.rows[0]);
+    });
+  }
 
 
 
@@ -151,11 +190,11 @@ console.log(password)
   
 
   function getUsers (request, response) {
-    const email = request.query.email;
+    const username = request.query.username;
     
-    getUsersFromDB(email, function(error, result) {
-        const email = result;
-        response.status(200).json(email);
+    getUsersFromDB(username, function(error, result) {
+        const username = result;
+        response.status(200).json(username);
     })
   }
   

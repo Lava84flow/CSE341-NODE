@@ -66,7 +66,7 @@ function loadRegister() {
     });
 }
 
-async function verifyRegistration() {
+async function validateRegistration() {
 
   if(empty(escapeHtml(document.querySelector('#fname').value))){
     fname_err = "Please enter a First Name.";
@@ -157,6 +157,49 @@ async function verifyRegistration() {
 
 }
 
+async function validateLogin() {
+
+  if(empty(escapeHtml(document.querySelector('#username').value))){
+    username_err = "Please enter a username.";
+    document.querySelector('#username_err').innerHTML = username_err;
+  } else {
+    username_err = '';
+    username = escapeHtml(document.querySelector('#username').value);
+    document.querySelector('#username_err').innerHTML = '';
+  }
+
+  if(empty(escapeHtml(document.querySelector('#password').value))){
+    password_err = "Please enter a password.";
+    document.querySelector('#password_err').innerHTML = password_err;
+  } else {
+    password_err = '';
+    password = escapeHtml(document.querySelector('#password').value);
+    document.querySelector('#password_err').innerHTML = '';
+  }
+
+  if(empty(username_err) && empty(password_err)) {
+    login()
+  }  
+
+}
+
+function login() {
+
+	var params = {
+		username: username,
+		password: password
+	};
+
+	$.post("/login", params, function(result) {
+		if (result && result.success) {
+			$("#status").text("Successfully logged in.");
+		} else {
+			$("#status").text("Error logging in.");
+		}
+	});
+}
+
+
 function saveCustomerToDB () {
 
   var params = {
@@ -169,14 +212,10 @@ function saveCustomerToDB () {
 
   //console.log(params)
 
-	$.post("/saveCustomer", params, function(result) {
-		if (result && result.success) {
-			$("#status").text("You Have Registered");
-		} else {
-			$("#status").text("Error Registering");
-		}
-	});
+	$.post("/saveCustomer", params);
 }
+
+
 
 
 async function checkEmails(email) {
