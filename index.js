@@ -139,11 +139,13 @@ console.log(password)
         console.log('TEST');
         console.log(results);
 
-        
+        var hashed_password = results.password;
 
-        if (results.length > 0 && bcrypt.compareSync(password, hash) == true) {
+        if (results.length > 0 && bcrypt.compareSync(password, hashed_password) == true) {
           req.session.loggedin = true;
           req.session.username = username;
+
+          console.log('login passed')
           //res.redirect('/milestone2.html');
         } else {
           res.send('Incorrect Username and/or Password!');
