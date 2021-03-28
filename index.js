@@ -140,7 +140,7 @@ console.log(password)
 
         console.log('141' + results);
 
-        if (results.length > 0 && bcrypt.compareSync(password, hash)) {
+        if (results.length > 0 && bcrypt.compareSync(password, hash) == true) {
           req.session.loggedin = true;
           req.session.username = username;
           //res.redirect('/milestone2.html');
