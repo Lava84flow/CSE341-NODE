@@ -134,11 +134,12 @@ console.log(password)
     
       const params = [username];
 
-      pool.query(sql, params, function(err, result) {
+      pool.query(sql, params, function(error, results, fields) {
 
-        console.log('139' + result);
+        console.log('TEST');
+        console.log(results);
 
-        console.log('141' + results);
+        
 
         if (results.length > 0 && bcrypt.compareSync(password, hash) == true) {
           req.session.loggedin = true;
