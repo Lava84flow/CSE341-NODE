@@ -123,20 +123,50 @@ console.log(password)
   }
 
   function handleLogin(req, res) {
-    var result = {success: false};
+    //var result = {success: false};
 
-    username = req.body.username;
-    password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
+
+    if (username && password) {
+
+      const sql = "SELECT idcustomers, first_name, last_name, username, password FROM anniesattic.customers WHERE username = $1::text;";
+    
+      const params = [username];
+
+      pool.query(sql, params, function(err, result) {
+
+        console.log('139' + result);
+
+        console.log('141' + results);
+
+        if (results.length > 0 && bcrypt.compareSync(password, hash)) {
+          req.session.loggedin = true;
+          req.session.username = username;
+          //res.redirect('/milestone2.html');
+        } else {
+          res.send('Incorrect Username and/or Password!');
+        }			
+        res.end();
+      });
+    } else {
+      res.send('Please enter Username and Password!');
+      res.end();
+    }
 
 
+
+/*
     var user = checkUsers(username, function(error, result) {
       const user = result;
       //console.log(user)
       return user;
       //response.status(200).json(user);
   });
+  */
   
-console.log(user);
+//console.log(user);
+
 /*
   if (user.length == 0) {
     console.log("NO RESULTS");
@@ -150,7 +180,31 @@ console.log(user);
   */
       //res.json(result);
   }
+
+  /*
+  app.post('/auth', function(request, response) {
+    var username = request.body.username;
+    var password = request.body.password;
+    if (username && password) {
+      connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+        if (results.length > 0) {
+          request.session.loggedin = true;
+          request.session.username = username;
+          response.redirect('/home');
+        } else {
+          response.send('Incorrect Username and/or Password!');
+        }			
+        response.end();
+      });
+    } else {
+      response.send('Please enter Username and Password!');
+      response.end();
+    }
+  });
   
+  */
+
+  /*
   function checkUsers(username, callback) {
     const sql = "SELECT idcustomers, first_name, last_name, username, password FROM anniesattic.customers WHERE username = $1::text;";
     
@@ -164,7 +218,7 @@ console.log(user);
         callback(null, result.rows[0]);
     });
   }
-
+*/
 
 
   function getEmails (request, response) {
