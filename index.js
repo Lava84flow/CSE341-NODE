@@ -141,6 +141,8 @@ console.log(password)
 
         var hashed_password = results.password;
 
+        console.log(hashed_password);
+
         if (results.length > 0 && bcrypt.compareSync(password, hashed_password) == true) {
           req.session.loggedin = true;
           req.session.username = username;
