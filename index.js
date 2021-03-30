@@ -29,6 +29,12 @@ const pool = new Pool({
   }
 });
 
+// set up sessions
+app.use(session({
+  secret: 'my-super-secret-secret!',
+  resave: false,
+  saveUninitialized: true
+}))
 
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
