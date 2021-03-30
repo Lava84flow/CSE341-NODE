@@ -137,7 +137,7 @@ console.log(password)
       pool.query(sql, params, function(error, results, fields) {
 
         console.log('TEST');
-        //console.log(results);
+        console.log(results);
 
         var hashed_password = results[0].password;
 
