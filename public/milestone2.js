@@ -212,7 +212,13 @@ function saveCustomerToDB () {
 
   //console.log(params)
 
-	$.post("/saveCustomer", params);
+	$.post("/saveCustomer", params, function(result) {
+		if (result && result.success) {
+			$("#status").text("Successfully Registered");
+		} else {
+			$("#status").text("Error Registering");
+		}
+	});
 }
 
 
