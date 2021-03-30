@@ -109,17 +109,17 @@ console.log(password)
   
     const params = [fname, lname, username, email, hashed_password];
     
-    pool.query(sql, params, function(err, res) {
-      //var result = {success: false};
+    pool.query(sql, params, function(err, result) {
+      var result = {success: false};
         if (err) {
-          //result = {success: false};
+          result = {success: false};
           console.log(err);
             
-        } /*else { 
-          return result = {success: true};
-        }*/
+        } else { 
+          result = {success: true};
+        }
         //console.log(result)
-        //res.json(result);
+        res.json(result);
         //callback(null, res.rows[0]);
     });
 
@@ -154,7 +154,7 @@ console.log(password)
           req.session.username = username;
 
           console.log('login passed')
-          //res.redirect('/milestone2.html');
+          res.redirect('/milestone2.html');
         } else {
           res.send('Incorrect Username and/or Password!');
         }			
