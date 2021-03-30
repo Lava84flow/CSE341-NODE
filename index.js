@@ -154,7 +154,7 @@ console.log(password)
           req.session.username = username;
 
           console.log('login passed')
-          res.redirect('/milestone2.html');
+          res.redirect('public/milestone2.html');
         } else {
           res.send('Incorrect Username and/or Password!');
         }			
@@ -265,10 +265,10 @@ console.log(password)
     })
   }
   
-  function getUsersFromDB(user, callback) {
+  function getUsersFromDB(username, callback) {
     const sql = "SELECT idcustomers FROM anniesattic.customers WHERE username = $1::text";
     
-    const params = [user];
+    const params = [username];
     
     pool.query(sql, params, function(err, result) {
         if (err) {
