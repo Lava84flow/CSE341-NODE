@@ -139,7 +139,7 @@ console.log(password)
         console.log('TEST');
         console.log(results);
 
-        var hashed_password = results[0].password;
+        var hashed_password = results.rows[0].password;
 
         console.log(hashed_password);
 
