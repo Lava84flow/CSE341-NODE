@@ -143,18 +143,30 @@ console.log(password)
       pool.query(sql, params, function(error, results, fields) {
 
         console.log('TEST');
-        //console.log(results);
+        console.log(results.rows);
 
         var hashed_password = results.rows[0].password;
 
         //console.log(hashed_password);
+/*
+        $_SESSION["loggedin"] = true;
+        $_SESSION["id"] = $id;
+        $_SESSION["username"] = $username;
+        $_SESSION["fname"] = $first_name;
+        $_SESSION["lname"] = $last_name;
+*/
 
         if (results.rows.length > 0 && bcrypt.compareSync(password, hashed_password) == true) {
           req.session.loggedin = true;
-          req.session.username = username;
+          req.session.id = results.rows[0].idcustomers;
+          req.session.username = results.rows[0].username;
+          req.session.fname = results.rows[0].first_name;
+          req.session.lname = results.rows[0].last_name;
+
+          console.log(req.session);
 
           console.log('login passed')
-          res.redirect('/');
+          res.redirect('/milestone2.html');
         } else {
           res.send('Incorrect Username and/or Password!');
         }			
