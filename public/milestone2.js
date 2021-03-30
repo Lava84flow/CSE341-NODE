@@ -242,7 +242,7 @@ async function checkEmails(email) {
 
 async function checkUsers(user) {
   let classIdURL =
-    "/getUsers?email=" + user;
+    "/getUsers?username=" + user;
   await fetch(classIdURL)
     .then((response ) => response.json())
     .then((jsObject) => {
