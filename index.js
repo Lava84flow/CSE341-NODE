@@ -154,7 +154,7 @@ console.log(password)
           req.session.username = username;
 
           console.log('login passed')
-          res.redirect('public/milestone2.html');
+          res.redirect('milestone2.html');
         } else {
           res.send('Incorrect Username and/or Password!');
         }			
