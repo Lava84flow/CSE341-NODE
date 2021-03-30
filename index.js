@@ -154,7 +154,7 @@ console.log(password)
           req.session.username = username;
 
           console.log('login passed')
-          res.redirect('/home');
+          res.redirect('/');
         } else {
           res.send('Incorrect Username and/or Password!');
         }			
