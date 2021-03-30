@@ -137,13 +137,13 @@ console.log(password)
       pool.query(sql, params, function(error, results, fields) {
 
         console.log('TEST');
-        console.log(results);
+        //console.log(results);
 
         var hashed_password = results.rows[0].password;
 
-        console.log(hashed_password);
+        //console.log(hashed_password);
 
-        if (results.length > 0 && bcrypt.compareSync(password, hashed_password) == true) {
+        if (results.rows.length > 0 && bcrypt.compareSync(password, hashed_password) == true) {
           req.session.loggedin = true;
           req.session.username = username;
 
