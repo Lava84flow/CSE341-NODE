@@ -162,7 +162,7 @@ console.log(password)
 
           //console.log(req.session);
 
-          //console.log('login passed')
+          console.log('login passed')
           //res.redirect('/milestone2.html');
         } else {
           result = {success: false};
@@ -175,7 +175,7 @@ console.log(password)
       res.end();
     }
 
-
+  res.json(result);
 
 /*
     var user = checkUsers(username, function(error, result) {
