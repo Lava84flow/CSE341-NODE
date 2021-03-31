@@ -167,15 +167,17 @@ console.log(password)
         } else {
           result = {success: false};
           //res.send('Incorrect Username and/or Password!');
-        }			
+        }
+        res.json(result);
         res.end();
       });
     } else {
       result = {success: false};
+      res.json(result);
       res.end();
     }
 
-  res.json(result);
+  //res.json(result);
 
 /*
     var user = checkUsers(username, function(error, result) {
