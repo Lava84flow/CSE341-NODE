@@ -39,9 +39,9 @@
 
     <script>
 
-      var sessionIdTest = ''
+      var loggedin = '<%= loggedin %>'
       
-          if (typeof sessionIdTest !== 'undefined' && sessionIdTest == true) {
+          if (typeof loggedin !== 'undefined' && loggedin == true) {
             document.querySelector('#content').innerHTML = 
             `<div style="width: 100%; margin: auto;">
                   <div class="page-header" style="width: 100%; margin: auto; text-align: center;">
