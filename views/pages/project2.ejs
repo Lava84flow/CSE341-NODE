@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Milestone 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    </head>
+  <body class="bg-secondary">
+
+<!--
+        <?php 
+            // Check if the user is already logged in, if yes then redirect him to welcome page
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                include 'welcome.php'; 
+            } else {
+                echo '
+                    <a href="register.php">New User</a>
+                    <br>
+                    <a href="login.php">Login</a>
+                ';
+            }
+        ?>
+
+-->
+
+
+
+
+      <div class="container" id="wrapper">
+      <main id="content">
+
+
+
+      </main>
+    </div> 
+
+    <script>
+
+      var sessionIdTest = ''
+      
+          if (typeof sessionIdTest !== 'undefined' && sessionIdTest == true) {
+            document.querySelector('#content').innerHTML = 
+            `<div style="width: 100%; margin: auto;">
+                  <div class="page-header" style="width: 100%; margin: auto; text-align: center;">
+                      <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["fname"]); ?> <?php echo htmlspecialchars($_SESSION["lname"]); ?></b>. Welcome to our site.</h1>
+                      <h2>Your username is: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h2>
+                  </div>
+                  
+                  <div style="padding-top: 0.5em; width: 100%; margin: auto; text-align: center;">
+                      <h3>What would you like to do today?</h3>
+                      <a href="addresses.php" class="project-button centered-button">View Saved Addresses (doesn't work)</a>
+                      <br />
+                      <!--<a href="payments.php" class="project-button centered-button">View Saved Payment Info</a>
+                      <br />-->
+                      <a href="store.php" class="project-button centered-button">Go Shopping (doesn't work)</a>
+                      <br />
+                      <a href="past-orders.php" class="project-button centered-button">View Past Orders (doesn't work)</a>
+                  </div>
+                      
+                  <div class="centered-button" style="padding-top: 0.5em; width: 100%; margin: auto;">    
+                      <a href="reset-password.php" class="btn btn-warning">Reset Your Password (doesn't work)</a>
+                      <a href="logout.php" class="btn btn-danger">Sign Out of Your Account (doesn't work)</a>
+                  </div>`;
+          } else {
+            document.querySelector('#content').innerHTML = 
+            `<div style="width: 100%; text-align: center;">
+                  <button class="btn btn-light" style="margin: 0.5em;" onclick="loadRegister()">New User</button><br>
+                  <button class="btn btn-light" style="margin: 0.5em;" onclick="loadLogin()">Login</button><br>
+              </div>`;
+          }
+      
+      </script>
+
+    <script src="milestone2.js"></script>
+  </body>
+</html>

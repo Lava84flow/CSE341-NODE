@@ -69,6 +69,9 @@ app.use(session({
     })
   })
 
+app.get('/project2', (req, res) => res.render('pages/project2'))
+
+
   app.get('/getAddresses', getAddresses);
 
   app.get('/getOrders', getOrders);
