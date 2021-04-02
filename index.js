@@ -69,7 +69,14 @@ app.use(session({
     })
   })
 
-app.get('/project2', (req, res) => res.render('pages/project2'))
+app.get('/project2', (req, res) => {
+  if (req.session.loggedin == true) {
+      
+  }
+  res.render('pages/project2', {
+    Blargh: Blargh
+  })
+})
 
 
   app.get('/getAddresses', getAddresses);
