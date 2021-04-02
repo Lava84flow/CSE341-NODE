@@ -75,7 +75,7 @@ app.get('/project2', (req, res) => {
       loginCheck = true;
   }
   res.render('pages/project2', {
-    loggedin: logingCheck
+    loggedin: loginCheck
   })
 })
 
