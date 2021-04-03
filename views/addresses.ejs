@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project 2 | Addresses</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link href="../shared/main.css" rel="stylesheet" type="text/css">
+    <script src="../shared/main.js" defer></script>
+</head>
+
+<body class="bg-secondary">
+
+    
+
+    <div class="container" id="wrapper">
+    <main id="content">
+
+        <script>
+            var customerId = '<%= id %>'
+
+            getAddresses(customerId);
+        </script>
+        
+        <div id="address-output">
+
+        <!--    
+        <?php 
+            if (!empty($addresses)) {
+                
+                echo '
+                    <table style="width:100%">
+                      <tr>
+                        <th>Address Type</th>
+                        <th>Line 1</th>
+                        <th>Line 2</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zipcode</th>
+                        <th>Delete Address</th>
+                      </tr>
+                ';
+                
+                
+                foreach ($addresses as $address) {
+                    $address_id =       $address['idaddresses'];
+                    $type =             $address['address_type'];
+                    $address_line1 =    $address['address_line1'];
+                    $address_line2 =    $address['address_line2'];
+                    $city =             $address['city'];
+                    $state =            $address['state'];
+                    $zipcode =          $address['zipcode'];
+                    
+                    
+                    
+                    echo "<tr><td>$type</td> <td>$address_line1</td> <td>$address_line2</td> <td>$city</td> <td>$state</td> <td>$zipcode</td> <td><a href=\"delete-address.php?ID=$address_id\">Delete</a></td></tr>";
+                }
+                
+                echo '</table>';
+                
+            } else {
+                echo 'You do not have any saved addresses';
+            }
+        ?>
+
+        -->
+
+
+        </div>
+        
+        <div>
+            <a href="add-addresses.php" class="project-button centered-button">Add Addresses</a>
+            <a href="/project2" class="project-button centered-button">Go Back</a>
+        </div>
+        
+    </main>
+
+    <div>
+    <footer class="clearfix">
+        <?php include '../shared/footer.php'; ?>
+    </footer>
+    </div>
+    </div>
+
+<script src="project2.js"></script>
+</body>
+</html>

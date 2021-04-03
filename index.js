@@ -84,6 +84,12 @@ app.get('/project2', (req, res) => {
 })
 
 
+app.get('/addresses', (req, res) => {
+  res.render('pages/addresses', {
+    id: req.session.id
+  })
+})
+
   app.get('/getAddresses', getAddresses);
 
   app.get('/getOrders', getOrders);
