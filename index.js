@@ -76,7 +76,7 @@ app.get('/project2', (req, res) => {
   }
   res.render('pages/project2', {
       loggedin: loginCheck
-    , id: req.session.id
+    , id: req.session.customerid
     , username: req.session.username
     , first_name: req.session.fname
     , last_name: req.session.lname
@@ -86,7 +86,7 @@ app.get('/project2', (req, res) => {
 
 app.get('/addresses', (req, res) => {
   res.render('pages/addresses', {
-    id: req.session.id
+    id: req.session.customerid
   })
 })
 
@@ -176,7 +176,7 @@ console.log(password)
           result = {success: true};
 
           req.session.loggedin = true;
-          req.session.id = results.rows[0].idcustomers;
+          req.session.customerid = results.rows[0].idcustomers;
           req.session.username = results.rows[0].username;
           req.session.fname = results.rows[0].first_name;
           req.session.lname = results.rows[0].last_name;
