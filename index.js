@@ -75,7 +75,11 @@ app.get('/project2', (req, res) => {
       loginCheck = true;
   }
   res.render('pages/project2', {
-    loggedin: loginCheck
+      loggedin: loginCheck
+    , id: req.session.id
+    , username: req.session.username
+    , first_name: req.session.fname
+    , last_name: req.session.lname
   })
 })
 
