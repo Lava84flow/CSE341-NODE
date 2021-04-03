@@ -23,47 +23,6 @@
         
         <div id="address-output">
 
-        <!--    
-        <?php 
-            if (!empty($addresses)) {
-                
-                echo '
-                    <table style="width:100%">
-                      <tr>
-                        <th>Address Type</th>
-                        <th>Line 1</th>
-                        <th>Line 2</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zipcode</th>
-                        <th>Delete Address</th>
-                      </tr>
-                ';
-                
-                
-                foreach ($addresses as $address) {
-                    $address_id =       $address['idaddresses'];
-                    $type =             $address['address_type'];
-                    $address_line1 =    $address['address_line1'];
-                    $address_line2 =    $address['address_line2'];
-                    $city =             $address['city'];
-                    $state =            $address['state'];
-                    $zipcode =          $address['zipcode'];
-                    
-                    
-                    
-                    echo "<tr><td>$type</td> <td>$address_line1</td> <td>$address_line2</td> <td>$city</td> <td>$state</td> <td>$zipcode</td> <td><a href=\"delete-address.php?ID=$address_id\">Delete</a></td></tr>";
-                }
-                
-                echo '</table>';
-                
-            } else {
-                echo 'You do not have any saved addresses';
-            }
-        ?>
-
-        -->
-
 
         </div>
         
@@ -74,11 +33,6 @@
         
     </main>
 
-    <div>
-    <footer class="clearfix">
-        <?php include '../shared/footer.php'; ?>
-    </footer>
-    </div>
     </div>
 
 <script src="project2.js"></script>
