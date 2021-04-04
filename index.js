@@ -108,6 +108,8 @@ app.get('/past-orders', (req, res) => {
 
   app.post('/login', handleLogin);
 
+  app.post('/logout', handleLogout);
+
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
@@ -230,6 +232,20 @@ console.log(password)
   */
       //res.json(result);
   }
+
+// If a user is currently stored on the session, removes it
+function handleLogout(req, res) {
+	var result = {success: false};
+
+	if (req.session.username) {
+		req.session.destroy();
+		result = {success: true};
+	}
+
+	res.json(result);
+  res.redirect('/project2');
+}
+
 
   /*
   app.post('/auth', function(request, response) {
