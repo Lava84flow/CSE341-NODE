@@ -242,7 +242,7 @@ function handleLogout(req, res) {
 		result = {success: true};
 	}
 
-	res.json(result);
+	//res.json(result);
   res.redirect('/project2');
 }
 
