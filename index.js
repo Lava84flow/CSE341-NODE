@@ -97,7 +97,7 @@ app.get('/past-orders', (req, res) => {
 })
 
 app.get('/reset-password', (req, res) => {
-  res.render('pages/reset-password'
+  res.render('pages/reset-password')
 })
 
   app.get('/getAddresses', getAddresses);
