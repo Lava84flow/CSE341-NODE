@@ -90,6 +90,12 @@ app.get('/addresses', (req, res) => {
   })
 })
 
+app.get('/past-orders', (req, res) => {
+  res.render('pages/past-orders', {
+    id: req.session.customerid
+  })
+})
+
   app.get('/getAddresses', getAddresses);
 
   app.get('/getOrders', getOrders);

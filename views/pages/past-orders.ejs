@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project 2 | Past Orders</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="project2.js"></script>
+</head>
+
+<body>
+
+    <div class="container" id="wrapper">
+        <main id="content">
+        
+            <div id="order-output">
+
+
+            </div>
+
+            <div>
+                <a href="/project2" class="project-button centered-button">Go Back</a>
+            </div>
+
+    </main>
+
+    </div>
+
+    <script>
+        var customerId = '<%= id %>'
+
+        getOrders(customerId);
+    </script>
+
+</body>
+</html>
