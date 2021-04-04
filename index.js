@@ -108,7 +108,7 @@ app.get('/past-orders', (req, res) => {
 
   app.post('/login', handleLogin);
 
-  app.post('/logout', handleLogout);
+  app.get('/logout', handleLogout);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
