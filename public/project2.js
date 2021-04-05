@@ -66,6 +66,16 @@ function loadRegister() {
     });
 }
 
+function loadAddAdresses() {
+  fetch('/add-addresses.html')
+    .then((response) => {
+      return response.text();
+    })
+    .then((myContent) => {
+      document.querySelector('#content').innerHTML = myContent;
+    });
+}
+
 async function validateRegistration() {
 
   if(empty(escapeHtml(document.querySelector('#fname').value))){
