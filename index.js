@@ -176,19 +176,20 @@ console.log(password)
 
       const params = [hashed_password, id];
     
-    pool.query(sql, params, function(err, result) {
-      var result = {success: false};
-        if (err) {
-          result = {success: false};
-          console.log(err);
-            
-        } else { 
-          result = {success: true};
-        }
-        //console.log(result)
-        res.json(result);
-        //callback(null, res.rows[0]);
-    });
+      pool.query(sql, params, function(err, result) {
+        var result = {success: false};
+          if (err) {
+            result = {success: false};
+            console.log(err);
+              
+          } else { 
+            req.session.destroy();
+            result = {success: true};
+          }
+          //console.log(result)
+          //res.json(result);
+          res.redirect('/project2');
+      });
     }
   }
 
