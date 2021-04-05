@@ -228,7 +228,7 @@ async function validateResetPassword() {
   }
 
   if(empty(password_err) && empty(confirm_password_err)) {
-    //resetPassword()
+    resetPassword()
   }  
 
 }
