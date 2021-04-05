@@ -199,6 +199,37 @@ function login() {
 	});
 }
 
+async function validateResetPassword() {
+
+  if(empty(escapeHtml(document.querySelector('#new_password').value))){
+    password_err = "Please enter the new password";
+    document.querySelector('#new_password_err').innerHTML = username_err;
+  } else {
+    password_err = '';
+    password = escapeHtml(document.querySelector('#new_password').value);
+    document.querySelector('#new_password_err').innerHTML = '';
+  }
+
+  if(empty(password_err) && (password != confirm_password)){
+    confirm_password_err = "Please confirm the password";
+    document.querySelector('#confirm_password_err').innerHTML = confirm_password_err;
+  } else {
+    confirm_password_err = '';
+    document.querySelector('#confirm_password_err').innerHTML = '';
+  }
+
+  if(empty(password_err) && empty(confirm_password_err)) {
+    //resetPassword()
+  }  
+
+}
+
+function resetPassword () {
+  var params = {
+		password: password
+	};
+}
+
 
 function saveCustomerToDB () {
 

@@ -112,6 +112,8 @@ app.get('/reset-password', (req, res) => {
 
   app.post('/login', handleLogin);
 
+  app.post('/reset-Password', handleResetPassword);
+
   app.get('/logout', handleLogout);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -159,6 +161,35 @@ console.log(password)
     //console.log(result)
     //res.json(result);
 
+  }
+
+  function handleResetPassword(req, res) {
+    var result = {success: false};
+
+    var id = req.session.customerid;
+    var password = req.body.password;
+    var hashed_password = bcrypt.hashSync(password, salt);
+
+
+    if (req.session.loggedin && password) {
+      const sql = 'UPDATE anniesattic.customers SET password = $1::text WHERE idcustomers = $2::int;';
+
+      const params = [hashed_password, id];
+    
+    pool.query(sql, params, function(err, result) {
+      var result = {success: false};
+        if (err) {
+          result = {success: false};
+          console.log(err);
+            
+        } else { 
+          result = {success: true};
+        }
+        //console.log(result)
+        res.json(result);
+        //callback(null, res.rows[0]);
+    });
+    }
   }
 
   function handleLogin(req, res) {
