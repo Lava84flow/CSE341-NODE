@@ -210,12 +210,21 @@ async function validateResetPassword() {
     document.querySelector('#new_password_err').innerHTML = '';
   }
 
-  if(empty(password_err) && (password != confirm_password)){
-    confirm_password_err = "Please confirm the password";
+  if(empty(escapeHtml(document.querySelector('#confirm_password').value))){
+    confirm_password_err = "Please confirm password.";
     document.querySelector('#confirm_password_err').innerHTML = confirm_password_err;
   } else {
     confirm_password_err = '';
+    confirm_password = escapeHtml(document.querySelector('#confirm_password').value);
     document.querySelector('#confirm_password_err').innerHTML = '';
+
+    if(empty(password_err) && (password != confirm_password)){
+      confirm_password_err = "Password did not match.";
+      document.querySelector('#confirm_password_err').innerHTML = confirm_password_err;
+    } else {
+      confirm_password_err = '';
+      document.querySelector('#confirm_password_err').innerHTML = '';
+    }
   }
 
   if(empty(password_err) && empty(confirm_password_err)) {
@@ -228,6 +237,14 @@ function resetPassword () {
   var params = {
 		password: password
 	};
+
+  $.post("/reset-password", params, function(result) {
+		if (result && result.success) {
+			$("#status").text("Successfully reset password");
+		} else {
+			$("#status").text("Error resetting password");
+		}
+	});
 }
 
 
