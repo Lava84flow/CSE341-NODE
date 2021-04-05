@@ -187,8 +187,8 @@ console.log(password)
             result = {success: true};
           }
           //console.log(result)
-          //res.json(result);
-          res.redirect('/project2');
+          res.json(result);
+          //res.redirect('/project2');
       });
     }
   }
