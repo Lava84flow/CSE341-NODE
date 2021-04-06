@@ -115,7 +115,7 @@ async function getProducts() {
                   <img class="thumb" src="${data[i].img_url}">
                   
                   <div class="centered-button">
-                    <button type="submit" name="AddCart" value="${data[i].productid}" onclick="AddCart(${data[i].productid})">Add To Cart</button>
+                    <button type="submit" name="AddCart" value="${data[i].idproducts}" onclick="AddCart(${data[i].idproducts})">Add To Cart</button>
                   </div>
                     
                 </div>`;
