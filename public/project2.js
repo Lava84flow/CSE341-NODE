@@ -134,8 +134,15 @@ async function getProducts() {
 
 
 function AddCart (productID, price) {
+  
+  productID = parseInt(productID);
   shopping_cart.push(productID);
+
+  price = price.substring(1);
+  price = price.parseInt(price);
+  
   price_total.push(price);
+
   console.log(shopping_cart);
   console.log(price_total);
 }
