@@ -92,8 +92,8 @@ async function loadStore() {
 
 async function getProducts() {
   let productsURL =
-    "/getAddresses?id=" + customerId;
-  await fetch(ProductsURL)
+    "/getProducts";
+  await fetch(productsURL)
     .then((response) => response.json())
     .then((jsObject) => {
       if (jsObject.length == 0) {
@@ -120,7 +120,7 @@ async function getProducts() {
                     
                 </div>`;
         }
-		    let out = '<table style="width: 100%;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
+		    let out = x;
 
           //console.log(out);
           document.getElementById("store-output").innerHTML = out;
