@@ -76,8 +76,8 @@ function loadAddAdresses() {
     });
 }
 
-function loadStore() {
-  fetch('/store-main.html')
+async function loadStore() {
+  await fetch('/store-main.html')
     .then((response) => {
       return response.text();
     })
