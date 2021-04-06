@@ -114,6 +114,8 @@ app.get('/reset-password', (req, res) => {
 
   app.post('/reset-Password', handleResetPassword);
 
+  app.post('/save-address' handleSaveAddress);
+
   app.get('/logout', handleLogout);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -161,6 +163,35 @@ console.log(password)
     //console.log(result)
     //res.json(result);
 
+  }
+
+  function handleSaveAddress(req, res) {
+    var result = {success: false};
+
+    var id = req.session.customerid;
+    var line1 = req.body.line1;
+    var line2 = req.body.line2;
+    var city = req.body.city;
+    var state = req.body.state;
+    var zipcode = req.body.zipcode;
+    var type = req.body.type;
+
+    if (req.session.loggedin && id) {
+      const sql = 'INSERT INTO anniesattic.addresses VALUES (DEFAULT, $1::int, $2::text, $3::text, $4::text, $5::text, $6::text, $7::text;';
+
+      const params = [id, type, line1, line2, city, state, zipcode];
+
+      pool.query(sql, params, function(err, result) {
+        var result = {success: false};
+          if (err) {
+            result = {success: false};
+            console.log(err);
+          } else { 
+            result = {success: true};
+          }
+          res.json(result);
+      });
+    }
   }
 
   function handleResetPassword(req, res) {

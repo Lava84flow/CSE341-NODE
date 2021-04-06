@@ -167,6 +167,97 @@ async function validateRegistration() {
 
 }
 
+async function validateAddAddresses () {
+
+  var line1, line2, city, state, zipcode, address_type;
+  line1 = line2 = city = state = zipcode = address_type = "";
+
+  var line1_err, line2_err, city_err, state_err, zipcode_err, address_type_err;
+  line1_err = line2_err = city_err = state_err = zipcode_err = address_type_err = "";
+
+  if(empty(escapeHtml(document.querySelector('#line1').value))){
+    line1_err = "Please fill out this line";
+    document.querySelector('#line1_err').innerHTML = line1_err;
+  } else {
+    line1_err = '';
+    line1 = escapeHtml(document.querySelector('#line1').value);
+    document.querySelector('#line1_err').innerHTML = '';
+  }
+
+  line2 = escapeHtml(document.querySelector('#line2').value);
+
+  if(empty(escapeHtml(document.querySelector('#city').value))){
+    city_err = "Please enter a City";
+    document.querySelector('#fname_err').innerHTML = city_err;
+  } else {
+    city_err = '';
+    city = escapeHtml(document.querySelector('#city').value);
+    document.querySelector('#city_err').innerHTML = '';
+  }
+
+  if(empty(escapeHtml(document.querySelector('#state').value))){
+    state_err = "Please enter a First Name.";
+    document.querySelector('#state_err').innerHTML = state_err;
+  } else if (escapeHtml(document.querySelector('#state').value).length != 2) {
+    state_err = "State code must be used";
+    document.querySelector('#state_err').innerHTML = state_err;
+  } else {  
+    state_err = '';
+    state = escapeHtml(document.querySelector('#state').value);
+    document.querySelector('#state_err').innerHTML = '';
+  }
+
+  if(empty(escapeHtml(document.querySelector('#zipcode').value))){
+    zipcode_err = "Please enter a Zipcode";
+    document.querySelector('#zipcode_err').innerHTML = zipcode_err;
+  } else if (escapeHtml(document.querySelector('#zipcode').value).length != 5) {
+    zipcode_err = "Zipcode must be 5 digits";
+    document.querySelector('#zipcode_err').innerHTML = zipcode_err;
+  } else {
+    zipcode_err = '';
+    zipcode = escapeHtml(document.querySelector('#zipcode').value);
+    document.querySelector('#fnamezipcode_err_err').innerHTML = '';
+  }
+
+  address_type = escapeHtml(document.querySelector('#address_type').value);
+  
+
+  if(empty(line1_err) && empty(line2_err) && empty(city_err) && empty(state_err) && empty(zipcode_err) && empty(address_type_err)) {
+    
+      var param_line1 = line1;
+      
+      if(!empty(line2)) {
+          var param_line2 = line2;
+      } else {
+          param_line2 = NULL;
+      }        
+      
+      var param_city = city;
+      var param_state = state;
+      var param_zipcode = zipcode;
+      var param_type = address_type;
+
+    var params = {
+      line1: param_line1,
+      line2: param_line2,
+      city: param_city,
+      state: param_state,
+      zipcode: param_zipcode,
+      type: param_type
+    };
+
+    $.post("/save-address", params, function(result) {
+      if (result && result.success) {
+        $("#status").text("Successfully saved address");
+      } else {
+        $("#status").text("Error saving address");
+      }
+    });
+  }  
+
+}
+
+
 async function validateLogin() {
 
   if(empty(escapeHtml(document.querySelector('#username').value))){
