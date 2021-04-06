@@ -77,7 +77,7 @@ function loadAddAdresses() {
 }
 
 async function loadStore() {
-  await fetch('/store.html')
+  await fetch('/store-main.html')
     .then((response) => {
       return response.text();
     })
