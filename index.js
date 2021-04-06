@@ -177,7 +177,7 @@ console.log(password)
     var type = req.body.type;
 
     if (req.session.loggedin && id) {
-      const sql = 'INSERT INTO anniesattic.addresses VALUES (DEFAULT, $1::int, $2::address_type, $3::text, $4::text, $5::text, $6::text, $7::text);';
+      const sql = 'INSERT INTO anniesattic.addresses VALUES (DEFAULT, $1::int, $2::anniesattic.address_type, $3::text, $4::text, $5::text, $6::text, $7::text);';
 
       const params = [id, type, line1, line2, city, state, zipcode];
 
