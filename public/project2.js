@@ -85,8 +85,52 @@ async function loadStore() {
       document.querySelector('#content').innerHTML = myContent;
     });
 
+  await getProducts();
 
 }
+
+
+async function getProducts() {
+  let productsURL =
+    "/getAddresses?id=" + customerId;
+  await fetch(ProductsURL)
+    .then((response) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        console.log("NO RESULTS");
+        document.getElementById("store-output").innerHTML = "NO RESULTS";
+      } else {
+        var x = '';
+        let data = jsObject;
+        console.log(data);
+        for (i = 0; i < data.length; i++) {
+          x += `<div class="store-item">
+                  <h3>${data[i].title}</h3>
+                  <span><strong>$price</strong></span>
+                  <br />
+                  <span>${data[i].media_name}, ${data[i].dimensions} inches</span>
+                  <br />
+                  <span>${data[i].description}</span>
+                  
+                  <img class="thumb" src="${data[i].img_url}">
+                  
+                  <div class="centered-button">
+                    <button type="submit" name="AddCart" value="${data[i].productid}" onclick="AddCart(${data[i].productid})">Add To Cart</button>
+                  </div>
+                    
+                </div>`;
+        }
+		    let out = '<table style="width: 100%;"> <tr> <th>Address Type</th> <th>Line 1</th> <th>Line 2</th> <th>City</th> <th>State</th> <th>Zipcode</th> </tr>' + x + '</table>';
+
+          //console.log(out);
+          document.getElementById("store-output").innerHTML = out;
+      }
+    });
+}
+
+
+'</td> <td>' + data[i].address_line1 + '</td> <td>' + data[i].address_line2 + '</td> <td>' + data[i].city + '</td> <td>' + data[i].state + '</td> <td>' + data[i].zipcode
+
 
 async function validateRegistration() {
 

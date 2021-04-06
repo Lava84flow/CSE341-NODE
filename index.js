@@ -105,6 +105,8 @@ app.get('/store', (req, res) => {
 })
 
 
+  app.get('/getProducts', getProducts)
+
   app.get('/getAddresses', getAddresses);
 
   app.get('/getOrders', getOrders);
@@ -124,6 +126,32 @@ app.get('/store', (req, res) => {
   app.get('/logout', handleLogout);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
+
+  function getProducts (request, response) {
+    
+    getProductsFromDB(function(error, result) {
+        const products = result;
+        console.log(products);
+        response.status(200).json(products);
+    })
+  }
+  
+  function getProductsFromDB(callback) {
+    const sql = `SELECT p.idproducts, p.title, mt.media_name, p.dimensions, p.price, p.description, p.img_url 
+      FROM anniesattic.products p JOIN anniesattic.media_type mt 
+      ON p.media_type_idmedia_type = mt.idmedia_type
+      ORDER BY p.idproducts;`;
+    
+    pool.query(sql, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        
+        callback(null, result.rows);
+    });
+  }
 
 
   function handleSaveCustomer(req, res) {
