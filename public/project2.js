@@ -106,7 +106,7 @@ async function getProducts() {
         for (i = 0; i < data.length; i++) {
           x += `<div class="store-item">
                   <h3>${data[i].title}</h3>
-                  <span><strong>$price</strong></span>
+                  <span><strong>${data[i].price}</strong></span>
                   <br />
                   <span>${data[i].media_name}, ${data[i].dimensions} inches</span>
                   <br />
