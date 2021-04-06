@@ -188,7 +188,7 @@ async function validateAddAddresses () {
 
   if(empty(escapeHtml(document.querySelector('#city').value))){
     city_err = "Please enter a City";
-    document.querySelector('#fname_err').innerHTML = city_err;
+    document.querySelector('#city_err').innerHTML = city_err;
   } else {
     city_err = '';
     city = escapeHtml(document.querySelector('#city').value);
@@ -216,7 +216,7 @@ async function validateAddAddresses () {
   } else {
     zipcode_err = '';
     zipcode = escapeHtml(document.querySelector('#zipcode').value);
-    document.querySelector('#fnamezipcode_err_err').innerHTML = '';
+    document.querySelector('#zipcode_err').innerHTML = '';
   }
 
   address_type = escapeHtml(document.querySelector('#address_type').value);
