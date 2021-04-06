@@ -114,7 +114,7 @@ app.get('/reset-password', (req, res) => {
 
   app.post('/reset-Password', handleResetPassword);
 
-  app.post('/save-address' handleSaveAddress);
+  app.post('/save-address', handleSaveAddress);
 
   app.get('/logout', handleLogout);
 
