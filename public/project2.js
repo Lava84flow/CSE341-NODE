@@ -229,7 +229,7 @@ async function validateAddAddresses () {
       if(!empty(line2)) {
           var param_line2 = line2;
       } else {
-          param_line2 = '';
+          param_line2 = null;
       }        
       
       var param_city = city;
