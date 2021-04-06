@@ -6,6 +6,9 @@ username = password = confirm_password = fname = lname = email = "";
 var username_err, password_err, confirm_password_err, fname_err, lname_err, email_err;
 username_err = password_err = confirm_password_err = fname_err = lname_err = email_err = "";
 
+var shopping_cart = [];
+var price_total = [];
+
 function escapeHtml(str)
 {
     var map =
@@ -115,7 +118,7 @@ async function getProducts() {
                   <img class="thumb" src="${data[i].img_url}">
                   
                   <div class="centered-button">
-                    <button type="submit" name="AddCart" value="${data[i].idproducts}" onclick="AddCart(this.value)">Add To Cart</button>
+                    <button type="submit" name="AddCart" value="${data[i].idproducts}" onclick="AddCart(this.value, ${data[i].price})">Add To Cart</button>
                   </div>
                     
                 </div>`;
@@ -129,7 +132,13 @@ async function getProducts() {
 }
 
 
-'</td> <td>' + data[i].address_line1 + '</td> <td>' + data[i].address_line2 + '</td> <td>' + data[i].city + '</td> <td>' + data[i].state + '</td> <td>' + data[i].zipcode
+
+function AddCart (productID, price) {
+  shopping_cart.push(productID);
+  price_total.push(price);
+}
+
+
 
 
 async function validateRegistration() {
