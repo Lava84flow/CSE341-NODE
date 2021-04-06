@@ -139,7 +139,7 @@ function AddCart (productID, price) {
   shopping_cart.push(productID);
 
   price = price.substring(1);
-  price = price.parseInt(price);
+  price = parseInt(price);
   
   price_total.push(price);
 
