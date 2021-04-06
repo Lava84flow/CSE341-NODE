@@ -136,6 +136,8 @@ async function getProducts() {
 function AddCart (productID, price) {
   shopping_cart.push(productID);
   price_total.push(price);
+  console.log(shopping_cart);
+  console.log(price_total);
 }
 
 
