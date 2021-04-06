@@ -100,6 +100,11 @@ app.get('/reset-password', (req, res) => {
   res.render('pages/reset-password')
 })
 
+app.get('/store', (req, res) => {
+  res.render('pages/store')
+})
+
+
   app.get('/getAddresses', getAddresses);
 
   app.get('/getOrders', getOrders);
