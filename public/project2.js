@@ -105,7 +105,7 @@ async function getProducts() {
       } else {
         var x = '';
         let data = jsObject;
-        console.log(data);
+        //console.log(data);
         for (i = 0; i < data.length; i++) {
           x += `<div class="store-item">
                   <h3>${data[i].title}</h3>
@@ -118,7 +118,7 @@ async function getProducts() {
                   <img class="thumb" src="${data[i].img_url}">
                   
                   <div class="centered-button">
-                    <button type="submit" name="AddCart" value="${data[i].idproducts}" onclick="AddCart(this.value, ${data[i].price})">Add To Cart</button>
+                    <button type="submit" name="AddCart" value="${data[i].idproducts}" onclick="AddCart(this.value, '${data[i].price}')">Add To Cart</button>
                   </div>
                     
                 </div>`;
