@@ -198,9 +198,9 @@ async function loadConfirmation () {
 
   $.post("/save-order", params, function(result) {
     if (result && result.success) {
-      $("#status").text("Successfully saved address");
+      $("#status").text("Successfully saved order");
     } else {
-      $("#status").text("Error saving address");
+      $("#status").text("Error saving order");
     }
   });
 }
