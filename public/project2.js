@@ -159,7 +159,7 @@ async function loadConfirmation () {
   await item_list();
 
   document.getElementById("totals").innerHTML = `<p>Your subtotal is: $${subtotal.toFixed(2)}</p>
-                                                    <p>Your taxes are: $${taxe.toFixed(2)}</p>
+                                                    <p>Your taxes are: $${taxes.toFixed(2)}</p>
                                                     <p>Your shipping is: $${shipping.toFixed(2)}</p>
         
                                                     <p>Your Total is: $${price_total.toFixed(2)}</p>`;
