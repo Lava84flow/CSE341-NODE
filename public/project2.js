@@ -139,11 +139,13 @@ async function getProduct(productID) {
         let data = jsObject;
 
         var img_url = data[0].img_url
-        console.log(img_url)
+        console.log(img_url);
 
-        return img_url;
       }
+
     });
+
+    return img_url;
 }
 
 async function getProducts() {
