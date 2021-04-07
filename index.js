@@ -102,7 +102,9 @@ app.get('/reset-password', (req, res) => {
 
 app.get('/store', (req, res) => {
   res.render('pages/store', {
-    id: req.session.customerid
+    id: req.session.customerid,
+    fname: req.body.first_name,
+    lname: req.body.last_name
   })
 })
 
@@ -144,7 +146,7 @@ app.get('/store', (req, res) => {
   }
 
   function getProductFromDB(id, callback) {
-    const sql = `SELECT img_url 
+    const sql = `SELECT price, img_url 
     FROM anniesattic.products
     WHERE idproducts = $1::int;`;
 

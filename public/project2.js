@@ -123,11 +123,66 @@ async function loadCheckout () {
     document.querySelector('#content').innerHTML = myContent;
   });
 
-  await getDropAddresses(customerId);
+  await getDropDownAddresses(customerId);
 
 }
 
-async function getDropAddresses(customerId) {
+async function loadConfirmation () {
+  await fetch('/confirmation.html')
+  .then((response) => {
+    return response.text();
+  })
+  .then((myContent) => {
+    document.querySelector('#content').innerHTML = myContent;
+  });
+
+  await item_list();
+
+
+}
+
+async function item_list () {
+  var x = '';
+
+  for (i = 0; i < shopping_cart.length; i++) {
+    var data = await getProduct2(shopping_cart[i]);
+
+    //console.log(img_src);
+
+    x += `${data.title} for ${data.title}<br>`;
+
+    let out = x;
+
+      //console.log(out);
+      document.getElementById("item_list").innerHTML = out;
+}
+}
+
+
+async function getProduct2(productID) {
+
+  var data = {};
+
+  let classIdURL =
+    "/getProduct?id=" + productID;
+  await fetch(classIdURL)
+    .then((response) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        console.log("NO RESULTS");
+        document.getElementById("confirmation-output").innerHTML = "NO RESULTS";
+      } else {
+        data = jsObject;   
+      
+      }
+
+    });
+    
+  return data;
+}
+
+
+async function getDropDownAddresses (customerId) {
   let classIdURL =
     "/getAddresses?id=" + customerId;
   await fetch(classIdURL)
@@ -146,7 +201,7 @@ async function getDropAddresses(customerId) {
         }
 		    let out = x;
 
-          //console.log(out);
+          console.log(out);
           document.getElementById("shipping_address").innerHTML = out;
 
           document.getElementById("billing_address").innerHTML = out;
@@ -174,6 +229,7 @@ async function FillCart() {
       document.getElementById("cart-output").innerHTML = out;
   }
 }
+
 
 function getSum(total, num) {
   return total + num;
