@@ -147,13 +147,13 @@ async function item_list () {
   for (i = 0; i < shopping_cart.length; i++) {
     var data = await getProduct2(shopping_cart[i]);
 
-    //console.log(img_src);
+    console.log(data);
 
-    x += `${data.title} for ${data.title}<br>`;
+    x += `${data.title} for $${data.title}<br>`;
 
     let out = x;
 
-      //console.log(out);
+      console.log(out);
       document.getElementById("item_list").innerHTML = out;
 }
 }
