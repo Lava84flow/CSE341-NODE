@@ -127,6 +127,9 @@ async function FillCart() {
 }
 
 async function getProduct(productID) {
+
+  var img_url
+
   let classIdURL =
     "/getProduct?id=" + productID;
   await fetch(classIdURL)
@@ -138,7 +141,7 @@ async function getProduct(productID) {
       } else {
         let data = jsObject;
 
-        var img_url = data[0].img_url
+        img_url = data[0].img_url
         console.log(img_url);
 
       }
