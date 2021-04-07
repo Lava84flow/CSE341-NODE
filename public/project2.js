@@ -126,15 +126,15 @@ async function FillCart() {
         <button type="submit" name="RemoveCart" value="${i}" onclick="removeFromCart(this.value)">Delete From Cart</button>
     </div></div>`;
 
-    let out = x + '<span><strong>Subtotal: $' + price_total.reduce(getSum, 0); + '</strong></span>';
+    let out = x + '<div style="text-align: center;"><span><strong>Subtotal: $' + price_total.reduce(getSum, 0); + '</strong></span></div>';
 
       //console.log(out);
       document.getElementById("cart-output").innerHTML = out;
   }
 }
 
-function getSum(total) {
-  return total;
+function getSum(total, num) {
+  return total + num;
 }
 
 async function getProduct(productID) {
