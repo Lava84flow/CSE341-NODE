@@ -99,9 +99,8 @@ async function loadShoppingCart () {
     })
     .then((myContent) => {
       document.querySelector('#content').innerHTML = myContent;
+      await FillCart();
     });
-
-    //await FillCart();
 
 }
 
@@ -114,9 +113,9 @@ async function FillCart() {
 
     console.log(img_src);
 
-    x += `<div class="store-item"><img class="thumb" src="${img_src}">'.
-    '<div class="centered-button">
-        <button type="submit" name="RemoveCart" value="Blargh" onclick="removeFromCart()">Delete From Cart</button>
+    x += `<div class="store-item"><img class="thumb" src="${img_src}">
+    <div class="centered-button">
+        <button type="submit" name="RemoveCart" value="${i}" onclick="removeFromCart(this.value)">Delete From Cart</button>
     </div></div>`;
 
     let out = x;
@@ -128,7 +127,7 @@ async function FillCart() {
 
 async function getProduct(productID) {
 
-  var img_url
+  var img_url = '';
 
   let classIdURL =
     "/getProduct?id=" + productID;
