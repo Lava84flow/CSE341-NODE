@@ -110,7 +110,9 @@ async function FillCart() {
   var x = '';
 
   for (i = 0; i < shopping_cart.length; i++) {
-    img_src = await getProduct(shopping_cart[i])
+    img_src = await getProduct(shopping_cart[i]);
+
+    console.log(img_src);
 
     x += `<div class="store-item"><img class="thumb" src="${img_src}">'.
     '<div class="centered-button">
@@ -136,7 +138,10 @@ async function getProduct(productID) {
       } else {
         let data = jsObject;
 
-        return data[0].img_url;
+        img_url = data[0].img_url
+        console.log(img_url)
+
+        return img_url;
       }
     });
 }
