@@ -149,7 +149,7 @@ async function item_list () {
 
     console.log(data);
 
-    x += `${data.title} for $${data.title}<br>`;
+    x += `${data[0].title} for $${data[0].price}<br>`;
 
     let out = x;
 
@@ -170,7 +170,7 @@ async function getProduct2(productID) {
     .then((jsObject) => {
       if (jsObject.length == 0) {
         console.log("NO RESULTS");
-        document.getElementById("confirmation-output").innerHTML = "NO RESULTS";
+        document.getElementById("item_list").innerHTML = "NO RESULTS";
       } else {
         data = jsObject;   
       
@@ -201,7 +201,7 @@ async function getDropDownAddresses (customerId) {
         }
 		    let out = x;
 
-          console.log(out);
+          //console.log(out);
           document.getElementById("shipping_address").innerHTML = out;
 
           document.getElementById("billing_address").innerHTML = out;

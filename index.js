@@ -146,7 +146,7 @@ app.get('/store', (req, res) => {
   }
 
   function getProductFromDB(id, callback) {
-    const sql = `SELECT price, img_url 
+    const sql = `SELECT title, price, img_url 
     FROM anniesattic.products
     WHERE idproducts = $1::int;`;
 
