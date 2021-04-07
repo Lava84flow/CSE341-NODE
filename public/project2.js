@@ -92,6 +92,51 @@ async function loadStore() {
 
 }
 
+async function loadShoppingCart () {
+  await fetch('/shopingcart.html')
+    .then((response) => {
+      return response.text();
+    })
+    .then((myContent) => {
+      document.querySelector('#content').innerHTML = myContent;
+    });
+
+    await FillCart();
+
+}
+
+async function FillCart() {
+
+
+  for (i = 0; i < shopping_cart.length; i++) {
+    x += `<div class="store-item"><img class="thumb" src="${await getProduct(shopping_cart[i])}">'.
+    '<div class="centered-button">
+        <button type="submit" name="RemoveCart" value="Blargh" onclick="removeFromCart()">Delete From Cart</button>
+    </div></div>`;
+
+    let out = x;
+
+          //console.log(out);
+          document.getElementById("cart-output").innerHTML = out;
+  }
+}
+
+async function getProduct(productID) {
+  let classIdURL =
+    "/getProduct?id=" + productID;
+  await fetch(classIdURL)
+    .then((response) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        console.log("NO RESULTS");
+        document.getElementById("cart-output").innerHTML = "NO RESULTS";
+      } else {
+        let data = jsObject;
+
+        return data[0].img_url;
+      }
+    });
+}
 
 async function getProducts() {
   let productsURL =
@@ -143,8 +188,8 @@ function AddCart (productID, price) {
   
   price_total.push(price);
 
-  console.log(shopping_cart);
-  console.log(price_total);
+  //console.log(shopping_cart);
+  //console.log(price_total);
 }
 
 
