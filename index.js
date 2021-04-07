@@ -150,7 +150,7 @@ app.get('/store', (req, res) => {
     var billing_address = req.body.billing_address;
 
     if (req.session.loggedin && id) {
-      const sql = 'INSERT INTO anniesattic.orders VALUES (DEFAULT, $1::int, $2::int, $3::int, $4::int, $5::text, $6::text, $7::text);';
+      const sql = 'INSERT INTO anniesattic.orders VALUES (DEFAULT, $1::int, $2::money, $3::money, $4::money, $5::text, $6::text, $7::text);';
 
       const params = [id, subtotal, taxes, shipping, status, shipping_address, billing_address];
 
