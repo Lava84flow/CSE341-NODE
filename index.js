@@ -173,7 +173,7 @@ app.get('/store', (req, res) => {
     })
 }
 
-function getAddressesFromDB(id, callback) {
+function getAddressFromDB(id, callback) {
     const sql = "SELECT address_type, address_line1, address_line2, city, state, zipcode FROM anniesattic.addresses WHERE idaddresses = $1::int";
     
     const params = [id];
