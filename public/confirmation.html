@@ -17,13 +17,11 @@
         <p>Your taxes are $<?php echo $taxes ?></p>
         <p>Your shipping is $<?php echo $shipping ?></p>
         
-        <p>
-            Your Total is: $<?php echo $price_total; ?>
-        </p>
+        <p>Your Total is: $<?php echo $price_total; ?></p>
         
         </div>
         
-        <p>
+        <p id="shipping_address">
             Your order will be sent to:
             
             <br>
@@ -39,7 +37,7 @@
             <?php echo $shipping_address["city"] . ', ' . $shipping_address["state"] . ' ' . $shipping_address["zipcode"] ?> 
         </p>
         
-        <p>
+        <p id="billing_address">
             The billing address is:
             
             <br>

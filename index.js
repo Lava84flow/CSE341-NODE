@@ -115,6 +115,8 @@ app.get('/store', (req, res) => {
 
   app.get('/getAddresses', getAddresses);
 
+  app.get('/getAddress', getAddress);
+
   app.get('/getOrders', getOrders);
 
   app.get('/getEmails', getEmails);
@@ -160,6 +162,30 @@ app.get('/store', (req, res) => {
         callback(null, result.rows);
     });
   }
+
+
+  function getAddress (request, response) {
+    const id = request.query.id;
+    
+    getAddressFromDB(id, function(error, result) {
+        const address = result;
+        response.status(200).json(address);
+    })
+}
+
+function getAddressesFromDB(id, callback) {
+    const sql = "SELECT address_type, address_line1, address_line2, city, state, zipcode FROM anniesattic.addresses WHERE idaddresses = $1::int";
+    
+    const params = [id];
+    
+    pool.query(sql, params, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        
+        callback(null, result.rows);
+    });
+}
 
 
   function getProducts (request, response) {

@@ -143,7 +143,10 @@ async function loadConfirmation () {
 
   var f = document.getElementById("billing_address");
   var billing_addressID = f.options[f.selectedIndex].value;
-  
+
+  var shipping_address = await getAddress(shipping_addressID);
+
+  var billing_address = await getAddress(billing_addressID);
 
   await fetch('/confirmation.html')
   .then((response) => {
@@ -155,7 +158,47 @@ async function loadConfirmation () {
 
   await item_list();
 
+  document.getElementById("totals").innerHTML = `<p>Your subtotal is ${subtotal}</p>
+                                                    <p>Your taxes are ${taxes}</p>
+                                                    <p>Your shipping is ${shipping}</p>
+        
+                                                    <p>Your Total is: ${price_total}</p>`;
 
+  
+  document.getElementById("shipping_address").innerHTML = `Your order will be sent to:<br>
+                                                          ${fname} ${lname}<br>
+                                                          ${shipping_address[0].address_line1} ${shipping_address[0].address_line2}<br>
+                                                          ${shipping_address[0].city}, ${shipping_address[0].state} ${shipping_address[0].zipcode}`;
+
+
+  document.getElementById("billing_address").innerHTML = `Your order will be sent to:<br>
+                                                          ${fname} ${lname}<br>
+                                                          ${billing_address[0].address_line1} ${billing_address[0].address_line2}<br>
+                                                          ${billing_address[0].city}, ${billing_address[0].state} ${billing_address[0].zipcode}`;
+
+}
+
+
+async function getAddress(addressID) {
+
+  var data = {};
+
+  let classIdURL =
+    "/getAddress?id=" + addressID;
+  await fetch(classIdURL)
+    .then((response) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        console.log("NO RESULTS");
+        document.getElementById("item_list").innerHTML = "NO RESULTS";
+      } else {
+        data = jsObject;   
+      
+      }
+
+    });
+    
+  return data;
 }
 
 async function item_list () {
@@ -164,7 +207,7 @@ async function item_list () {
   for (i = 0; i < shopping_cart.length; i++) {
     var data = await getProduct2(shopping_cart[i]);
 
-    console.log(data);
+    //  console.log(data);
 
     x += `${data[0].title} for $${data[0].price}<br>`;
 
