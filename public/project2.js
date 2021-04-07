@@ -7,7 +7,7 @@ var username_err, password_err, confirm_password_err, fname_err, lname_err, emai
 username_err = password_err = confirm_password_err = fname_err = lname_err = email_err = "";
 
 var shopping_cart = [];
-var price_total = [];
+var prices = [];
 
 function escapeHtml(str)
 {
@@ -96,7 +96,7 @@ async function loadStore() {
 
 async function removeFromCart(cart_item) {
   shopping_cart.splice(cart_item, 1);
-  price_total.splice(cart_item, 1);
+  prices.splice(cart_item, 1);
 
   await FillCart();
 }
@@ -128,6 +128,23 @@ async function loadCheckout () {
 }
 
 async function loadConfirmation () {
+
+  var subtotal = prices.reduce(getSum, 0);
+
+  var taxes = subtotal * 0.05;
+
+  var shipping = 10.00;
+
+  var price_total = subtotal + taxes + shipping;
+
+  //var shipping_address = shipping_address;
+
+  //var billing_address = billing_address;
+
+  var e = document.getElementById("shipping_address");
+    var result = e.options[e.selectedIndex].value;
+    alert(result);
+  
   await fetch('/confirmation.html')
   .then((response) => {
     return response.text();
@@ -223,7 +240,7 @@ async function FillCart() {
         <button type="submit" name="RemoveCart" value="${i}" onclick="removeFromCart(this.value)">Delete From Cart</button>
     </div></div>`;
 
-    let out = x + '<div style="text-align: center;"><span><strong>Subtotal: $' + price_total.reduce(getSum, 0); + '</strong></span></div>';
+    let out = x + '<div style="text-align: center;"><span><strong>Subtotal: $' + prices.reduce(getSum, 0); + '</strong></span></div>';
 
       //console.log(out);
       document.getElementById("cart-output").innerHTML = out;
@@ -308,10 +325,10 @@ function AddCart (productID, price) {
   price = price.substring(1);
   price = parseInt(price);
   
-  price_total.push(price);
+  prices.push(price);
 
   //console.log(shopping_cart);
-  //console.log(price_total);
+  //console.log(prices);
 }
 
 
