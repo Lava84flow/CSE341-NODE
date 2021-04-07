@@ -240,7 +240,7 @@ async function item_list () {
 
     let out = x;
 
-      console.log(out);
+      //console.log(out);
       document.getElementById("item_list").innerHTML = out;
 }
 }
