@@ -158,11 +158,11 @@ async function loadConfirmation () {
 
   await item_list();
 
-  document.getElementById("totals").innerHTML = `<p>Your subtotal is ${subtotal}</p>
-                                                    <p>Your taxes are ${taxes}</p>
-                                                    <p>Your shipping is ${shipping}</p>
+  document.getElementById("totals").innerHTML = `<p>Your subtotal is: $${subtotal.toFixed(2)}</p>
+                                                    <p>Your taxes are: $${taxe.toFixed(2)}</p>
+                                                    <p>Your shipping is: $${shipping.toFixed(2)}</p>
         
-                                                    <p>Your Total is: ${price_total}</p>`;
+                                                    <p>Your Total is: $${price_total.toFixed(2)}</p>`;
 
   
   document.getElementById("shipping_address").innerHTML = `Your order will be sent to:<br>
@@ -209,7 +209,7 @@ async function item_list () {
 
     //  console.log(data);
 
-    x += `${data[0].title} for $${data[0].price}<br>`;
+    x += `${data[0].title} for ${data[0].price}<br>`;
 
     let out = x;
 
