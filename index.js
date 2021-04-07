@@ -103,8 +103,8 @@ app.get('/reset-password', (req, res) => {
 app.get('/store', (req, res) => {
   res.render('pages/store', {
     id: req.session.customerid,
-    fname: req.body.first_name,
-    lname: req.body.last_name
+    fir_name: req.session.fname,
+    las_name: req.session.lname
   })
 })
 
