@@ -166,13 +166,13 @@ async function loadConfirmation () {
 
   
   document.getElementById("shipping_address").innerHTML = `Your order will be sent to:<br>
-                                                          ${fname} ${lname}<br>
+                                                          ${fir_name} ${las_name}<br>
                                                           ${shipping_address[0].address_line1} ${shipping_address[0].address_line2}<br>
                                                           ${shipping_address[0].city}, ${shipping_address[0].state} ${shipping_address[0].zipcode}`;
 
 
   document.getElementById("billing_address").innerHTML = `Your order will be sent to:<br>
-                                                          ${fname} ${lname}<br>
+                                                          ${fir_name} ${las_name}<br>
                                                           ${billing_address[0].address_line1} ${billing_address[0].address_line2}<br>
                                                           ${billing_address[0].city}, ${billing_address[0].state} ${billing_address[0].zipcode}`;
 
