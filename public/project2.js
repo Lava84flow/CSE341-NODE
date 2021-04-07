@@ -137,14 +137,14 @@ async function loadConfirmation () {
 
   var price_total = subtotal + taxes + shipping;
 
-  //var shipping_address = shipping_address;
-
-  //var billing_address = billing_address;
 
   var e = document.getElementById("shipping_address");
-    var result = e.options[e.selectedIndex].value;
-    alert(result);
+  var shipping_addressID = e.options[e.selectedIndex].value;
+
+  var f = document.getElementById("billing_address");
+  var billing_addressID = f.options[f.selectedIndex].value;
   
+
   await fetch('/confirmation.html')
   .then((response) => {
     return response.text();
