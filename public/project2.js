@@ -176,6 +176,33 @@ async function loadConfirmation () {
                                                           ${billing_address[0].address_line1} ${billing_address[0].address_line2}<br>
                                                           ${billing_address[0].city}, ${billing_address[0].state} ${billing_address[0].zipcode}`;
 
+                                    
+    var param_subtotal = subtotal;
+    var param_taxes = taxes;
+    var param_shipping = shipping;
+
+    var param_status = 'In Progress';
+    
+    var param_shipping_address = `${shipping_address[0].address_line1} ${shipping_address[0].address_line2}, ${shipping_address[0].city}, ${shipping_address[0].state} ${shipping_address[0].zipcode}`;
+    
+    var param_billing_address = `${billing_address[0].address_line1} ${billing_address[0].address_line2}, ${billing_address[0].city}, ${billing_address[0].state} ${billing_address[0].zipcode}`;
+
+  var params = {
+    subtotal: param_subtotal,
+    taxes: param_taxes,
+    shipping: param_shipping,
+    status: param_status,
+    shipping_address: param_shipping_address,
+    billing_address: param_billing_address
+  };
+
+  $.post("/save-order", params, function(result) {
+    if (result && result.success) {
+      $("#status").text("Successfully saved address");
+    } else {
+      $("#status").text("Error saving address");
+    }
+  });
 }
 
 

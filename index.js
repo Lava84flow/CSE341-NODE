@@ -131,9 +131,41 @@ app.get('/store', (req, res) => {
 
   app.post('/save-address', handleSaveAddress);
 
+  app.post('/save-order', handleSaveOrder);
+
   app.get('/logout', handleLogout);
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
+  function handleSaveOrder(req, res) {
+    var result = {success: false};
+
+    var id = req.session.customerid;
+    var subtotal = req.body.subtotal;
+    var taxes = req.body.taxes;
+    var shipping = req.body.shipping;
+    var status = req.body.status;
+    var shipping_address = req.body.shipping_address;
+    var billing_address = req.body.billing_address;
+
+    if (req.session.loggedin && id) {
+      const sql = 'INSERT INTO anniesattic.orders VALUES (DEFAULT, $1::int, $2::int, $3::int, $4::int, $5::text, $6::text, $7::text);';
+
+      const params = [id, subtotal, taxes, shipping, status, shipping_address, billing_address];
+
+      pool.query(sql, params, function(err, result) {
+        var result = {success: false};
+          if (err) {
+            result = {success: false};
+            console.log(err);
+          } else { 
+            result = {success: true};
+          }
+          res.json(result);
+      });
+    }
+  }
 
 
   function getProduct (request, response) {
