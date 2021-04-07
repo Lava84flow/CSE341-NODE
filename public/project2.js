@@ -135,7 +135,8 @@ async function getDropAddresses(customerId) {
     .then((jsObject) => {
       if (jsObject.length == 0) {
         console.log("NO RESULTS");
-        document.getElementById("address-output").innerHTML = "NO RESULTS";
+        document.getElementById("shipping_address").innerHTML = "NO RESULTS";
+        document.getElementById("billing_address").innerHTML = "NO RESULTS";
       } else {
         var x = '';
         let data = jsObject;

@@ -8,60 +8,24 @@
                 
     <div class="form-group has-error">                
         <label>Shipping Address</label>
-        <select name="shipping-address" style="color: black;">
-            <?php
-                
-                foreach ($addresses as $address) {
-                    $address_id =       $address['idaddresses'];
-                    $type =             $address['address_type'];
-                    $address_line1 =    $address['address_line1'];
-                    $address_line2 =    $address['address_line2'];
-                    $city =             $address['city'];
-                    $state =            $address['state'];
-                    $zipcode =          $address['zipcode'];
-        
-        
-        
-                    echo "<option value=\"$address_id\">$address_line1 $address_line2, $city, $zipcode</option>";
-                }
-                    
-            ?>
+        <select name="shipping_address" style="color: black;" id="shipping_address">
+            
         </select> 
         <span class="help-block" id="shipping_err"></span>
     </div>
     
     <div class="form-group has-erro">                
         <label>Billing Address</label>
-        <select name="billing-address" style="color: black;">
-            <?php
-                
-                foreach ($addresses as $address) {
-                    $address_id =       $address['idaddresses'];
-                    $type =             $address['address_type'];
-                    $address_line1 =    $address['address_line1'];
-                    $address_line2 =    $address['address_line2'];
-                    $city =             $address['city'];
-                    $state =            $address['state'];
-                    $zipcode =          $address['zipcode'];
-        
-        
-        
-                    echo "<option value=\"$address_id\">$address_line1 $address_line2, $city, $zipcode</option>";
-                }
-                    
-            ?>
+        <select name="billing_address" style="color: black;" id="billing_address"> 
+           
         </select> 
         <span class="help-block" id="billing_err"></span>
     </div>
     <br />
     <p>Don't have any saved addresses? <a href="/addresses">Click here</a> to add one.</p>
-    
-    <div style="padding: 1em">
-        <button class="rounded" name="purchase" type="submit">Purchase</button>
-    </div>
 
 </div>
 
 <div style="text-align: center;">
-    <button class="btn btn-light" style="margin: 0.5em;" onclick="loadConfirmation()">Checkout</button>
+    <button class="btn btn-light" style="margin: 0.5em;" onclick="loadConfirmation()">Purchase</button>
 </div>
