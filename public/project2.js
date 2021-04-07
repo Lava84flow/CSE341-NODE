@@ -93,7 +93,7 @@ async function loadStore() {
 }
 
 async function loadShoppingCart () {
-  await fetch('/shopingcart.html')
+  await fetch('/shoppingcart.html')
     .then((response) => {
       return response.text();
     })
