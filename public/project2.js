@@ -110,7 +110,9 @@ async function FillCart() {
   var x = '';
 
   for (i = 0; i < shopping_cart.length; i++) {
-    x += `<div class="store-item"><img class="thumb" src="${await getProduct(shopping_cart[i])}">'.
+    img_src = await getProduct(shopping_cart[i])
+
+    x += `<div class="store-item"><img class="thumb" src="${img_src}">'.
     '<div class="centered-button">
         <button type="submit" name="RemoveCart" value="Blargh" onclick="removeFromCart()">Delete From Cart</button>
     </div></div>`;
