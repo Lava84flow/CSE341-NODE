@@ -92,6 +92,13 @@ async function loadStore() {
 
 }
 
+async function removeFromCart(cart_item) {
+  shopping_cart.splice(cart_item, 1);
+  price_total.splice(cart_item, 1);
+
+  await FillCart();
+}
+
 async function loadShoppingCart () {
   await fetch('/shoppingcart.html')
     .then((response) => {
