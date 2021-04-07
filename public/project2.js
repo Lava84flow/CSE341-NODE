@@ -92,6 +92,8 @@ async function loadStore() {
 
 }
 
+
+
 async function removeFromCart(cart_item) {
   shopping_cart.splice(cart_item, 1);
   price_total.splice(cart_item, 1);
@@ -110,6 +112,45 @@ async function loadShoppingCart () {
 
     await FillCart();
 
+}
+
+async function loadCheckout () {
+  await fetch('/checkout.html')
+  .then((response) => {
+    return response.text();
+  })
+  .then((myContent) => {
+    document.querySelector('#content').innerHTML = myContent;
+  });
+
+  await getDropAddresses(customerId);
+
+}
+
+async function getDropAddresses(customerId) {
+  let classIdURL =
+    "/getAddresses?id=" + customerId;
+  await fetch(classIdURL)
+    .then((response) => response.json())
+    .then((jsObject) => {
+      if (jsObject.length == 0) {
+        console.log("NO RESULTS");
+        document.getElementById("address-output").innerHTML = "NO RESULTS";
+      } else {
+        var x = '';
+        let data = jsObject;
+        //console.log(data);
+        for (i = 0; i < data.length; i++) {
+          x += `<option value="${data[i].idaddresses}">${data[i].address_line1} ${data[i].address_line2}, ${data[i].city}, ${data[i].state} ${data[i].zipcode}</option>`;
+        }
+		    let out = x;
+
+          //console.log(out);
+          document.getElementById("shipping_address").innerHTML = out;
+
+          document.getElementById("billing_address").innerHTML = out;
+      }
+    });
 }
 
 async function FillCart() {

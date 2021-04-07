@@ -101,7 +101,9 @@ app.get('/reset-password', (req, res) => {
 })
 
 app.get('/store', (req, res) => {
-  res.render('pages/store')
+  res.render('pages/store', {
+    id: req.session.customerid
+  })
 })
 
 
