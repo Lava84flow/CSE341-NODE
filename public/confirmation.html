@@ -1,13 +1,62 @@
-<div style="text-align: center;">
-    <button class="btn btn-light" style="margin: 0.5em;" onclick="loadStore()">Back To Store</button>
-</div>
+<div id="confirmation-output">
 
-<div id="cart-output">
+    <div>
+            
+        <p>
+            You Ordered: 
+            
+            <br>
+            <span id="item_list">
 
+            </span>
+        </p>
+        
+        <div style="border-bottom: medium solid darkred; border-top: medium solid darkred; width: 100%;" id="totals">
+        
+        <p>Your subtotal is $<?php echo $subtotal ?></p>
+        <p>Your taxes are $<?php echo $taxes ?></p>
+        <p>Your shipping is $<?php echo $shipping ?></p>
+        
+        <p>
+            Your Total is: $<?php echo $price_total; ?>
+        </p>
+        
+        </div>
+        
+        <p>
+            Your order will be sent to:
+            
+            <br>
+            
+            <?php echo htmlspecialchars($_SESSION["fname"]) . ' ' . htmlspecialchars($_SESSION["lname"]) ?>
+            
+            <br>
+            
+            <?php echo $shipping_address["address_line1"] . ' ' . $shipping_address["address_line2"] ?>
+            
+            <br>
+            
+            <?php echo $shipping_address["city"] . ', ' . $shipping_address["state"] . ' ' . $shipping_address["zipcode"] ?> 
+        </p>
+        
+        <p>
+            The billing address is:
+            
+            <br>
+            
+            <?php echo htmlspecialchars($_SESSION["fname"]) . ' ' . htmlspecialchars($_SESSION["lname"]) ?>
+            
+            <br>
+            
+            <?php echo $billing_address["address_line1"] . ' ' . $billing_address["address_line2"] ?>
+            
+            <br>
+            
+            <?php echo $billing_address["city"] . ', ' . $billing_address["state"] . ' ' . $billing_address["zipcode"] ?> 
+        </p>
+    </div>
+    <div style="text-align: center;">
+        <a href="/project2" class="btn btn-light" style="margin: 0.5em;">Go Back Main Page</a>
+    </div>
 
-
-</div>
-
-<div style="text-align: center;">
-    <button class="btn btn-light" style="margin: 0.5em;" onclick="loadCheckout()">Checkout</button>
 </div>
