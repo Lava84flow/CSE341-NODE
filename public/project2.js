@@ -107,6 +107,7 @@ async function loadShoppingCart () {
 
 async function FillCart() {
 
+  var x = '';
 
   for (i = 0; i < shopping_cart.length; i++) {
     x += `<div class="store-item"><img class="thumb" src="${await getProduct(shopping_cart[i])}">'.
