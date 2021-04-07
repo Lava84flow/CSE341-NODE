@@ -101,7 +101,7 @@ async function loadShoppingCart () {
       document.querySelector('#content').innerHTML = myContent;
     });
 
-    await FillCart();
+    //await FillCart();
 
 }
 
